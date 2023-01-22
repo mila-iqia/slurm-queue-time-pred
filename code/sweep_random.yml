@@ -1,0 +1,31 @@
+program: code/wait_time_prediction/run_experiment.py
+method: random
+metric:
+  goal: minimize
+  name: val_loss_checkpoint
+parameters:
+  batch_size:
+    values: [ 128 ]
+  learning_rate:
+    distribution: "log_uniform_values"
+    min: 1e-5
+    max: 1e-2
+  optimizer:
+    values: [ "adam" ]
+  hidden_size:
+    distribution: "q_log_uniform_values"
+    min: 32
+    max: 256
+    q: 8
+  nbr_layers:
+    distribution: "q_uniform"
+    min: 4
+    max: 8
+  l1:
+    distribution: "log_uniform_values"
+    min: 1e-5
+    max: 1e-2
+  l2:
+    distribution: "log_uniform_values"
+    min: 1e-5
+    max: 1e-2

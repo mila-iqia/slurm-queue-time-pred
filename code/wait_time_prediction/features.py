@@ -1,0 +1,16 @@
+
+predicting_features = ['job_unique_id', 'cluster_id', 'submit_time', 'partition_id_x', 'account_id', 'req_cpus', 
+                       'req_mem_total', 'alloc_nodes', 'eligible_time', 'elapsed_time', 'req_mem_per_cpu', 'poll_time', 
+                       'pending_id', 'partition_id_y', 'priority_y', 'q_jobs_above', 'q_cores_above', 'q_mem_above', 
+                       'q_core_hours_above', 'q_p_jobs_above', 'q_p_cores_above', 'q_p_mem_above', 'q_p_core_hours_above', 
+                       'q_a_jobs_above', 'q_a_cores_above', 'q_a_mem_above', 'q_a_core_hours_above', 'q_p_a_jobs_above', 
+                       'q_p_a_cores_above', 'q_p_a_mem_above', 'q_p_a_core_hours_above', 'q_gpus_above', 'q_p_gpus_above', 
+                       'q_a_gpus_above', 'q_p_a_gpus_above', 'q_gpu_hours_above', 'q_p_gpu_hours_above', 
+                       'q_a_gpu_hours_above', 'q_p_a_gpu_hours_above', 'q_gpu_run_hours', 'q_p_gpu_run_hours', 
+                       'q_a_gpu_run_hours', 'q_p_a_gpu_run_hours', 'running_id', 'r_jobs_above', 'r_cores_above', 
+                       'r_mem_above', 'r_core_hours_above', 'r_p_jobs_above', 'r_p_cores_above', 'r_p_mem_above', 
+                       'r_p_core_hours_above', 'r_a_jobs_above', 'r_a_cores_above', 'r_a_mem_above', 'r_a_core_hours_above', 
+                       'r_p_a_jobs_above', 'r_p_a_cores_above', 'r_p_a_mem_above', 'r_p_a_core_hours_above', 'r_gpus_above', 
+                       'r_p_gpus_above', 'r_a_gpus_above', 'r_p_a_gpus_above', 'r_gpu_hours_above', 'r_p_gpu_hours_above', 
+                       'r_a_gpu_hours_above', 'r_p_a_gpu_hours_above', 'sshare_id', 'raw_share_poll', 'norm_share_poll', 
+                       'raw_use_poll', 'effect_use_poll', 'level_fs_poll', 'norm_use_poll', 'norm_use_log_poll']

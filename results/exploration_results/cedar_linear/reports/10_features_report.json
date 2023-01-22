@@ -1,0 +1,174 @@
+{
+    "deterioration_stats_at_each_step": {
+        "test_loss_deter": {
+            "Round 1": {
+                "Frequency": 0.5307,
+                "Mean": 0.0137
+            },
+            "Round 10": {
+                "Frequency": 0.7125,
+                "Mean": 0.0147
+            },
+            "Round 2": {
+                "Frequency": 0.4787,
+                "Mean": 0.0071
+            },
+            "Round 3": {
+                "Frequency": 0.4479,
+                "Mean": 0.0101
+            },
+            "Round 4": {
+                "Frequency": 0.2826,
+                "Mean": 0.012
+            },
+            "Round 5": {
+                "Frequency": 0.5109,
+                "Mean": 0.0103
+            },
+            "Round 6": {
+                "Frequency": 0.4118,
+                "Mean": 0.0097
+            },
+            "Round 7": {
+                "Frequency": 0.4045,
+                "Mean": 0.013
+            },
+            "Round 8": {
+                "Frequency": 0.427,
+                "Mean": 0.0139
+            },
+            "Round 9": {
+                "Frequency": 0.6118,
+                "Mean": 0.011
+            }
+        },
+        "train_loss_deter": {
+            "Round 1": {
+                "Frequency": 0.0335,
+                "Mean": 0.0234
+            },
+            "Round 10": {
+                "Frequency": 0.05,
+                "Mean": 0.0184
+            },
+            "Round 2": {
+                "Frequency": 0.0106,
+                "Mean": 0.0001
+            },
+            "Round 3": {
+                "Frequency": 0.1042,
+                "Mean": 0.0034
+            },
+            "Round 4": {
+                "Frequency": 0.0326,
+                "Mean": 0.0366
+            },
+            "Round 5": {
+                "Frequency": 0.0326,
+                "Mean": 0.0098
+            },
+            "Round 6": {
+                "Frequency": 0.0118,
+                "Mean": 0.0433
+            },
+            "Round 7": {
+                "Frequency": 0.0225,
+                "Mean": 0.0171
+            },
+            "Round 8": {
+                "Frequency": 0.0,
+                "Mean": 0.0
+            },
+            "Round 9": {
+                "Frequency": 0.0471,
+                "Mean": 0.0314
+            }
+        },
+        "valid_loss_deter": {
+            "Round 1": {
+                "Frequency": 0.6983,
+                "Mean": 0.0187
+            },
+            "Round 10": {
+                "Frequency": 0.9,
+                "Mean": 0.0162
+            },
+            "Round 2": {
+                "Frequency": 0.4894,
+                "Mean": 0.0132
+            },
+            "Round 3": {
+                "Frequency": 0.7292,
+                "Mean": 0.0098
+            },
+            "Round 4": {
+                "Frequency": 0.663,
+                "Mean": 0.012
+            },
+            "Round 5": {
+                "Frequency": 0.5652,
+                "Mean": 0.0149
+            },
+            "Round 6": {
+                "Frequency": 0.7529,
+                "Mean": 0.0097
+            },
+            "Round 7": {
+                "Frequency": 0.7753,
+                "Mean": 0.0118
+            },
+            "Round 8": {
+                "Frequency": 0.6292,
+                "Mean": 0.0181
+            },
+            "Round 9": {
+                "Frequency": 0.6941,
+                "Mean": 0.0138
+            }
+        }
+    },
+    "hyperparams": {
+        "batch_size": 128,
+        "hidden layers": 6,
+        "hidden_size": 128,
+        "learning_rate": 0.001,
+        "model": "linear",
+        "optimizer": "adam"
+    },
+    "test_loss_at_each_step": {
+        "r_p_gpu_hours_above": 0.603,
+        "r_p_gpu_hours_above q_p_a_mem_above": 0.5855,
+        "r_p_gpu_hours_above q_p_a_mem_above q_a_jobs_above": 0.5253,
+        "r_p_gpu_hours_above q_p_a_mem_above q_a_jobs_above q_a_cores_above": 0.5309,
+        "r_p_gpu_hours_above q_p_a_mem_above q_a_jobs_above q_a_cores_above q_gpu_run_hours": 0.4853,
+        "r_p_gpu_hours_above q_p_a_mem_above q_a_jobs_above q_a_cores_above q_gpu_run_hours r_p_gpus_above": 0.4818,
+        "r_p_gpu_hours_above q_p_a_mem_above q_a_jobs_above q_a_cores_above q_gpu_run_hours r_p_gpus_above effect_use_poll": 0.4714,
+        "r_p_gpu_hours_above q_p_a_mem_above q_a_jobs_above q_a_cores_above q_gpu_run_hours r_p_gpus_above effect_use_poll q_p_core_hours_above": 0.4668,
+        "r_p_gpu_hours_above q_p_a_mem_above q_a_jobs_above q_a_cores_above q_gpu_run_hours r_p_gpus_above effect_use_poll q_p_core_hours_above r_p_cores_above": 0.5084,
+        "r_p_gpu_hours_above q_p_a_mem_above q_a_jobs_above q_a_cores_above q_gpu_run_hours r_p_gpus_above effect_use_poll q_p_core_hours_above r_p_cores_above elapsed_time": 0.5054
+    },
+    "training_loss_at_each_step": {
+        "r_p_gpu_hours_above": 0.6722,
+        "r_p_gpu_hours_above q_p_a_mem_above": 0.5527,
+        "r_p_gpu_hours_above q_p_a_mem_above q_a_jobs_above": 0.523,
+        "r_p_gpu_hours_above q_p_a_mem_above q_a_jobs_above q_a_cores_above": 0.5186,
+        "r_p_gpu_hours_above q_p_a_mem_above q_a_jobs_above q_a_cores_above q_gpu_run_hours": 0.5148,
+        "r_p_gpu_hours_above q_p_a_mem_above q_a_jobs_above q_a_cores_above q_gpu_run_hours r_p_gpus_above": 0.5127,
+        "r_p_gpu_hours_above q_p_a_mem_above q_a_jobs_above q_a_cores_above q_gpu_run_hours r_p_gpus_above effect_use_poll": 0.5099,
+        "r_p_gpu_hours_above q_p_a_mem_above q_a_jobs_above q_a_cores_above q_gpu_run_hours r_p_gpus_above effect_use_poll q_p_core_hours_above": 0.4978,
+        "r_p_gpu_hours_above q_p_a_mem_above q_a_jobs_above q_a_cores_above q_gpu_run_hours r_p_gpus_above effect_use_poll q_p_core_hours_above r_p_cores_above": 0.4939,
+        "r_p_gpu_hours_above q_p_a_mem_above q_a_jobs_above q_a_cores_above q_gpu_run_hours r_p_gpus_above effect_use_poll q_p_core_hours_above r_p_cores_above elapsed_time": 0.4812
+    },
+    "validation_loss_at_each_step": {
+        "r_p_gpu_hours_above": 0.5757,
+        "r_p_gpu_hours_above q_p_a_mem_above": 0.492,
+        "r_p_gpu_hours_above q_p_a_mem_above q_a_jobs_above": 0.4507,
+        "r_p_gpu_hours_above q_p_a_mem_above q_a_jobs_above q_a_cores_above": 0.4345,
+        "r_p_gpu_hours_above q_p_a_mem_above q_a_jobs_above q_a_cores_above q_gpu_run_hours": 0.4243,
+        "r_p_gpu_hours_above q_p_a_mem_above q_a_jobs_above q_a_cores_above q_gpu_run_hours r_p_gpus_above": 0.4049,
+        "r_p_gpu_hours_above q_p_a_mem_above q_a_jobs_above q_a_cores_above q_gpu_run_hours r_p_gpus_above effect_use_poll": 0.391,
+        "r_p_gpu_hours_above q_p_a_mem_above q_a_jobs_above q_a_cores_above q_gpu_run_hours r_p_gpus_above effect_use_poll q_p_core_hours_above": 0.3829,
+        "r_p_gpu_hours_above q_p_a_mem_above q_a_jobs_above q_a_cores_above q_gpu_run_hours r_p_gpus_above effect_use_poll q_p_core_hours_above r_p_cores_above": 0.3743,
+        "r_p_gpu_hours_above q_p_a_mem_above q_a_jobs_above q_a_cores_above q_gpu_run_hours r_p_gpus_above effect_use_poll q_p_core_hours_above r_p_cores_above elapsed_time": 0.3654
+    }
+}
