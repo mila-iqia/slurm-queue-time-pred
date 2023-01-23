@@ -1,6 +1,6 @@
 # Data
 
-The data is found in the **data **module at the root of the project and is separated into folders according to format and clusters.
+The data is found in the **data** module at the root of the project and is separated into folders according to format and clusters.
 
 Data collection is spread over several consecutive days. Every day, at the same time, a snapshot of the status of all uncompleted jobs on the cluster is captured. This moment of capturing the state of the cluster, or snapshot, is represented by the variable _poll time_.
 
@@ -19,7 +19,7 @@ Some variables are not used for training, either because they come from a linear
 Figure 1 shows the distribution of the variable to be predicted, _poll wait sec_, without transformation (top graph) and with a base-10 logarithmic transformation (bottom graph). 
 
 
-![alt_text](results/plots/dist_poll_wait.png "image_tooltip")
+![Distribution of poll_wait_sec](../results/plots/dist_poll_wait_sec.png)
 
 
 _Figure 1. Distribution of wait time at the time of the snapshot. Top, without transformation (1e6 scale). Below, with log10 transformation._
@@ -33,7 +33,7 @@ We find that with the logarithmic transformation (bottom graph), the distributio
 We have also chosen to standardize all the input variables, so that the values ​​are under the same scale. The motivation for this is to have a more stable optimization problem, which is different from our motivation to transform the variable to be predicted. To show this transformation, we chose a feature arbitrarily. Figure 2 represents the distribution of this feature without transformation and with a standard normalization, so that the mean of the values ​​is 0 and the variance is 1.
 
 
-![alt_text](images/image3.png "image_tooltip")
+![Distribution of eligible_time](../results/plots/dist_eligible_time.png)
 
 
 _Figure 2. Distribution of the time when a job becomes eligible to run. Top, without transformation (1e9 scale). Bottom, with standard normalization._
