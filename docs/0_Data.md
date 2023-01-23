@@ -16,7 +16,7 @@ Some variables are not used for training, either because they come from a linear
 
 ## Data distribution
 The plot below shows the distribution of the variable to be predicted, _poll wait sec_, without transformation (top graph) and with a base-10 logarithmic transformation (bottom graph). 
-<br>
+<br><br>
 <p align="center">
   <img src="../results/plots/dist_poll_wait_sec.png">
 </p>
@@ -28,7 +28,7 @@ From this observation came the idea of ​​predicting the order of magnitude o
 We find that with the logarithmic transformation (bottom graph), the distribution approximates more to a normal distribution. There is less concentration around the same values. We chose a base 10 logarithmic transformation for its ease of interpretation, but we could have chosen any other logarithmic transformation without affecting the solution. It would therefore have been possible, for example, to take a natural logarithmic transformation and then add a multiplicative constant to the loss after training the model.
 <br><br>
 We have also chosen to standardize all the input variables, so that the values ​​are under the same scale. The motivation for this is to have a more stable optimization problem, which is different from our motivation to transform the variable to be predicted. To show this transformation, we chose a feature arbitrarily. The plot below represents the distribution of this feature without transformation and with a standard normalization, so that the mean of the values ​​is 0 and the variance is 1.
-<br>
+<br><br>
 <p align="center">
   <img src="../results/plots/dist_eligible_time.png">
 </p>
