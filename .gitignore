@@ -133,7 +133,6 @@ data/.~lock*
 wandb/*
 models/last_model.pth
 results/reports/*
-results/plots/*
 data/*/*
 !data/*/*/
 code/start_time_estimation/*/
