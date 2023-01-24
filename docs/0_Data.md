@@ -1,21 +1,25 @@
 # Data
 
-The data is found in the **data** module at the root of the project and is separated into folders according to format and clusters.
-<br><br>
-Data collection is spread over several consecutive days. Every day, at the same time, a snapshot of the status of all uncompleted jobs on the cluster is captured. This moment of capturing the state of the cluster, or snapshot, is represented by the variable _poll time_.
-<br><br>
-The variable to be predicted is _poll wait sec_, which corresponds to the difference, in seconds, between the moment when we take the snapshot and the moment when the job actually starts running on the compute cluster. Taking the difference between the current time and the start time of a job on the cluster allows us to measure the time remaining before the job runs. This takes into account the time that has passed since the job was submitted. Therefore, this difference can be considered as equivalent to the waiting time of the job.
-<br><br>
+<div style="text-align: justify">The data is found in the <b>data</b> module at the root of the project and is separated into folders according to format and clusters.
+<br></br>
+Data collection is spread over several consecutive days. Every day, at the same time, a snapshot of the status of all uncompleted jobs on the cluster is captured. This moment of capturing the state of the cluster, or snapshot, is represented by the variable <i>poll_time</i>.
+<br></br>
+The variable to be predicted is <i>poll_wait_sec</i>, which corresponds to the difference, in seconds, between the moment when we take the snapshot and the moment when the job actually starts running on the compute cluster. Taking the difference between the current time and the start time of a job on the cluster allows us to measure the time remaining before the job runs. This takes into account the time that has passed since the job was submitted. Therefore, this difference can be considered as equivalent to the waiting time of the job.
+<br></br>
+</div>
 
 ## Data composition
 
-The data consists of csv files, each representing a snapshot of the state of jobs on the Cedar and Graham clusters at 12:00 p.m. (noon) for a given day in the months of May, June and July 2021. In total, 68 files were provided for Cedar, and 61 files for Graham. Cedar's total record count for all days is 1,125,293, while Graham's is 334,748. A record corresponds to the state of a particular job. This state is described by 97 variables, among which 16 have been obtained by the `sacct` command and 81 are "augmented", i.e. they have been calculated from other variables or retrieved a posteriori. The 16 variables obtained by `sacct` characterize the current job, while the others characterize the state of the cluster with respect to the current job.
-<br><br>
-Some variables are not used for training, either because they come from a linear transformation of poll_wait_sec, therefore to be excluded from the poll_wait_sec prediction task, or because they are redundant (i.e. different units). Variables that are not available at prediction time are removed. In the end, 76 variables are used for training. These variables, which we will call features, are listed in the features.py file of the code.wait_time_prediction module.
-<br><br>
+<div style="text-align: justify">The data consists of csv files, each representing a snapshot of the state of jobs on the Cedar and Graham clusters at 12:00 p.m. (noon) for a given day in the months of May, June and July 2021. In total, 68 files were provided for Cedar, and 61 files for Graham. Cedar's total record count for all days is 1,125,293, while Graham's is 334,748. A record corresponds to the state of a particular job. This state is described by 97 variables, among which 16 have been obtained by the <code>sacct</code> command and 81 are "augmented", i.e. they have been calculated from other variables or retrieved a posteriori. The 16 variables obtained by <code>sacct</code> characterize the current job, while the others characterize the state of the cluster with respect to the current job.
+<br></br>
+Some variables are not used for training, either because they come from a linear transformation of <i>poll_wait_sec</i>, therefore to be excluded from the wait time prediction task, or because they are redundant (i.e. different units). Variables that are not available at prediction time are removed. In the end, 76 variables are used for training. These variables, which we will call features, are listed in the <b>features.py</b> file of the <b>code.wait_time_prediction</b> module.
+<br></br>
+</div>
+
 
 ## Data distribution
-The plot below shows the distribution of the variable to be predicted, _poll wait sec_, without transformation (top graph) and with a base-10 logarithmic transformation (bottom graph).
+
+<div style="text-align: justify">The plot below shows the distribution of the variable to be predicted, _poll wait sec_, without transformation (top graph) and with a base-10 logarithmic transformation (bottom graph).
 <br><br>
 <div align="center">
   <table>
@@ -30,7 +34,7 @@ The plot below shows the distribution of the variable to be predicted, _poll wai
  </i>
 </p>
 <br>
-We note that without transformation, the distribution of the variable is unbalanced: there is a concentration of points between 0 and 0.25 (values ​​are multiplied by 10<sup>6</sup>), which corresponds to an interval from 0 to 69.4 hours. the majority of the jobs are found in this interval, with a few exceptions represented by the lower bands. 
+We note that without transformation, the distribution of the variable is unbalanced: there is a concentration of points between 0 and 0.25 (values ​​are multiplied by 10<sup>6</sup>), which corresponds to an interval from 0 to 69.4 hours. The majority of jobs are found in this interval, with a few exceptions represented by the lower bands. 
 <br><br>
 From this observation came the idea of ​​predicting the order of magnitude of the waiting time, instead of its exact value. This not only improves training by decreasing the prediction error for values ​​far from the majority in the untransformed distribution, but also makes more useful predictions. Indeed, for a SLURM user, it is more relevant to obtain an accurate estimate of the job’s queue time with a coarse granularity (in terms of hours or fractions of an hour) rather than get a rough estimate with fine granularity (in terms of seconds).
 <br><br>
@@ -50,3 +54,4 @@ We have also chosen to standardize all the input variables, so that the values �
  <i>Distribution of eligible_time (i.e. time when a job becomes eligible to run). Top, without transformation (1e9 scale). Bottom, with standard normalization.
  </i>
 </p>
+</div>

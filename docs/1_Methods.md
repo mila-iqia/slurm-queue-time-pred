@@ -1,19 +1,20 @@
 # Methods
 
 
-## Data separation
+## Data split
 
-This section presents how the data was split for the model training experiments. The test and validation sets each include 10% of the total number of days of data available, randomly sampled. The training set includes the remaining days. There is no overlap between data from different sets. Also, samples (jobs) belonging to the same day are part of the same set.
-<br><br>
-We had the choice to split the days chronologically or randomly. We opted for the second method, since it reduces the impact on the predictive performance of the variability that exists between jobs in the training and test sets. However, in the operating environment, training models with data from previous days is more realistic (see [Training on Past Data](docs/3_Train_on_past_data.md).
-<br><br>
+<div style="text-align: justify">The test and validation sets each include 10% of the total number of days of data available, randomly sampled. The training set includes the remaining days. There is no overlap between data from different sets. Also, samples (jobs) belonging to the same day are part of the same set.
+<br></br>
+We had the choice to split the days chronologically or randomly. We opted for the second method, since it reduces the impact on the predictive performance of the variability that exists between jobs in the training and test sets. However, in the operating environment, training models with data from previous days is more realistic (see <a href="docs/3_Train_on_past_data">Training on Past Data</a>).
+<br></br>
+</div>
 
 ## Choice of models
 
-This section presents the models used to predict the waiting time of jobs on computing clusters. We first implemented a linear regression model. The advantage of this model is that it is simple to implement and that it makes it possible to verify that the inputs and outputs of the system are correct. Additionally, it is possible to calculate the exact solution to the linear problem using least squares, since the mean square error (MSE) or loss effectively corresponds to the error rate. This provides a benchmark for the minimum loss expected after training.
-<br><br>
+<div style="text-align: justify">The models used to predict the waiting time of jobs on computing clusters are described here. We first implemented a linear regression model. The advantage of this model is that it is simple to implement and that it makes it possible to verify that the inputs and outputs of the system are correct. Additionally, it is possible to calculate the exact solution to the linear problem using least squares, since the mean square error (MSE) or loss effectively corresponds to the error rate. This provides a benchmark for the minimum loss expected after training.
+<br></br>
 The following table presents the parameters of the deep neural network variants (i.e. with several hidden layers) chosen for Cedar and Graham clusters (for which training data is available).
-<br><br>
+<br></br>
 <p align="center">
 <table>
   <tr>
@@ -70,16 +71,17 @@ The following table presents the parameters of the deep neural network variants 
 </p>
 <br>
 These neural networks possess ReLU activations between layers. The use of attention and transformer models has been discarded because the data is non-sequential in nature.
-<br><br>
+<br></br>
 We proceeded to hyperparameters optimization using Weights & Biases taking as criterion the validation loss. In total, five hyperparameters were optimized: the learning rate, the number of layers, the number of hidden neurons per layer as well as the L1 and L2 regularization coefficients. Ten trials of training each model were performed to calculate the loss on the training, validation and test sets. Then, the predictions of the 10 trials were combined to obtain the distribution of the differences between the predictions and the actual wait time values.
-<br><br>
+<br></br>
+</div>
 
 ## Code Documentation
 
-To run a model training experiment, run the **run_experiment.py** script from the **code.wait_time_prediction** module specifying the desired training parameters and hyperparameters.
-<br><br>
+<div style="text-align: justify">To run a model training experiment, run the <b>run_experiment.py</b> script from the <b>code.wait_time_prediction</b> module specifying the desired training parameters and hyperparameters.
+<br></br>
 Here is the list of possible (hyper)parameters, as well as their default values:
-
+</div>
 <table>
  <tr>
   <td>--features
@@ -170,8 +172,8 @@ Here is the list of possible (hyper)parameters, as well as their default values:
   </td>
  </tr>
 </table>
-<br>
 
+<div style="text-align: justify">
 *Corresponds to a multi-layered deep neural network. The other valid possibility is linear for the linear regression model.
 
 **Two values ​​are allowed: adam or sgd.
@@ -179,7 +181,7 @@ Here is the list of possible (hyper)parameters, as well as their default values:
 ***Two values ​​are allowed: cedar or graham.
 <br><br>
 Here is an example of running the script from outside the project root:
-
+</div>
 
 ```
 python3 slurm-queue-time-pred/code/wait_time_prediction/run_experiment.py --features=eligible_time,submit_time --model=linear -- learning_rate=0.00001 --batch_size=64 --optimizer=sgd --hidden_size=64 --nbr_layers=3 --l1=0.0001 --l2=0.0001 --mix_train_valid --cluster=graham
