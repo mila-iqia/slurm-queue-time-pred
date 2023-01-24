@@ -5,7 +5,7 @@
 
 This section presents how the data was split for the model training experiments. The test and validation sets each include 10% of the total number of days of data available, randomly sampled. The training set includes the remaining days. There is no overlap between data from different sets. Also, samples (jobs) belonging to the same day are part of the same set.
 <br><br>
-We had the choice to split the days chronologically or randomly. We opted for the second method, since it reduces the impact on the predictive performance of the variability that exists between jobs in the training and test sets. However, in the operating environment, training models with data from previous days is more realistic (see section 5).
+We had the choice to split the days chronologically or randomly. We opted for the second method, since it reduces the impact on the predictive performance of the variability that exists between jobs in the training and test sets. However, in the operating environment, training models with data from previous days is more realistic (see [Training on Past Data](docs/3_Train_on_past_data.md).
 <br><br>
 
 ## Choice of models

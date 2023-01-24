@@ -17,25 +17,20 @@ Some variables are not used for training, either because they come from a linear
 ## Data distribution
 The plot below shows the distribution of the variable to be predicted, _poll wait sec_, without transformation (top graph) and with a base-10 logarithmic transformation (bottom graph). 
 <br><br>
-
 <p align="center">
   <img src="../results/plots/dist_poll_wait_sec.png">
   <i>Distribution of poll_wait_sec (to be predicted). Top, without transformation (1e6 scale). Below, with log10 transformation.</i>
 </p>
-
 <br>
 We note that without transformation, the distribution of the variable is unbalanced: there is a concentration of points between 0 and 0.25 (values ​​are multiplied by 10<sup>6</sup>), which corresponds to an interval from 0 to 69.4 hours. the majority of the jobs are found in this interval, with a few exceptions represented by the lower bands. 
 <br><br>
-From this observation came the idea of ​​predicting the order of magnitude of the waiting time, instead of its exact value. This not only improves training by decreasing the prediction error for values ​​far from the majority in the untransformed distribution, but also makes more useful predictions. Indeed, for a Slurm user, it is more relevant to obtain an accurate estimate of the job’s queue time with a coarse granularity (in terms of hours or fractions of an hour) rather than get a rough estimate with fine granularity (in terms of seconds).
+From this observation came the idea of ​​predicting the order of magnitude of the waiting time, instead of its exact value. This not only improves training by decreasing the prediction error for values ​​far from the majority in the untransformed distribution, but also makes more useful predictions. Indeed, for a SLURM user, it is more relevant to obtain an accurate estimate of the job’s queue time with a coarse granularity (in terms of hours or fractions of an hour) rather than get a rough estimate with fine granularity (in terms of seconds).
 <br><br>
 We find that with the logarithmic transformation (bottom graph), the distribution approximates more to a normal distribution. There is less concentration around the same values. We chose a base 10 logarithmic transformation for its ease of interpretation, but we could have chosen any other logarithmic transformation without affecting the solution. It would therefore have been possible, for example, to take a natural logarithmic transformation and then add a multiplicative constant to the loss after training the model.
 <br><br>
 We have also chosen to standardize all the input variables, so that the values ​​are under the same scale. The motivation for this is to have a more stable optimization problem, which is different from our motivation to transform the variable to be predicted. To show this transformation, we chose a feature arbitrarily. The plot below represents the distribution of this feature without transformation and with a standard normalization, so that the mean of the values ​​is 0 and the variance is 1.
 <br><br>
-
 <p align="center">
   <img src="../results/plots/dist_eligible_time.png">
   <i>Distribution of eligible_time (i.e. time when a job becomes eligible to run). Top, without transformation (1e9 scale). Bottom, with standard normalization.</i>
 </p>
-
-<br>
