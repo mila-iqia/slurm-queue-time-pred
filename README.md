@@ -1,7 +1,4 @@
-# SLURM WAIT PREDICTION
-<span style="color: #f2cf4a; font-size: 24px;">Poll wait time prediction using deep learning
-</span>
-
+# SLURM WAIT TIME PREDICTION
 
 ## Purpose
 
@@ -36,13 +33,13 @@ The best predictors of a job's wait time on the cluster appear to be the amount 
 
 ## Documentation
 
-<span style="font-size: 16px;"><a href="docs/0_Data.md">Data</a><br>
+ <font size="4"><a href="docs/0_Data.md">Data</a><br>
 <a href="docs/1_Methods.md">Methods</a><br>
 <a href="docs/2_Results.md">Results</a><br>
 <a href="docs/3_Train_on_past_data.md">Training on Past Data</a><br>
 <a href="docs/4_Feature_exploration.md">Feature Exploration</a><br>
 <a href="docs/5_Discussion.md">Discussion</a><br>
-</span>
+</font>
 
 
 ## Contributors
