@@ -10,7 +10,7 @@ The method we used to do this is to train a model with all the features individu
 
 <div style="text-align: justify">The following figures show the results of the feature exploration with the linear model and the 7-layer neural network model used to make predictions on Cedar data. For each of the models, the curves of the training and test loss (MSE) according to the cumulative features for the training are presented.
 <br><br>
-<p align="center">
+<div align="center">
  <table>
   <tr>
    <td><img src="../results/exploration_results/cedar_linear/plots/10_features_plot_training.png">
@@ -19,14 +19,12 @@ The method we used to do this is to train a model with all the features individu
    </td>
   </tr>
  </table>
-</p>
-<p align="center">
  <i>Training (left) and test (right) loss according to cumulative features used for training the linear model, using data from Cedar.
  </i>
-</p>
+</div>
 <br>
 <br><br>
-<p align="center">
+<div align="center">
  <table>
   <tr>
    <td><img src="../results/exploration_results/cedar_7NN/plots/10_features_plot_training.png">
@@ -35,11 +33,9 @@ The method we used to do this is to train a model with all the features individu
    </td>
   </tr>
  </table>
-</p>
-<p align="center">
  <i>Training (left) and test (right) loss according to cumulative features used for training the 7-layer neural network model, using data from Cedar.
  </i>
-</p>
+</div>
 <br>
 The green hatched lines in the graphs above represent the MSE obtained by training the model with the set of all features (76). The loss cannot fall below this line with less training features. It is expected that the loss decreases monotonically, since the model always has the possibility of putting a zero coefficient in front of a feature which is not used for the prediction.
 <br></br>
@@ -74,12 +70,15 @@ We find that the features selected by each of the models and the order of select
 <div style="text-align: justify">Here is an example of running the script from outside the project root:
 </div>
 
-<code>python3 slurm-queue-time-pred/code/explore_features/run_experiment.py --nbr_top_features=15 --output_dir=example_experiment
-</code>
+```
+python3 slurm-queue-time-pred/code/explore_features/run_experiment.py --nbr_top_features=15 --output_dir=example_experiment
+```
 
 <div style="text-align: justify">To generate the results of the best predictive features exploration, run the <b>report_results.py</b> script from the <b>code.explore_features</b> module using the same arguments as those used to launch the experiment. It is possible to choose a different number of accumulated features to produce the results files. An additional argument, synthetic_data, if present, allows the use of loss references (MSE) associated with synthetic data. The script will generate a JSON file containing the progression of training, validation and test losses as well as the frequency and average of times these losses deteriorated with the addition of a new feature. It will also generate three graphs representing each of the losses according to the accumulation of the best features.
 <br></br>
 Here is an example of running the script from outside the project root:
 </div>
-<code>python3 slurm-queue-time-pred/code/explore_features/report_results.py --nbr_top_features=10 --output_dir=example_experiment --synthetic_data
-</code>
+
+```
+python3 slurm-queue-time-pred/code/explore_features/report_results.py --nbr_top_features=10 --output_dir=example_experiment --synthetic_data
+```

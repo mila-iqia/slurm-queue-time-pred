@@ -15,7 +15,7 @@ We had the choice to split the days chronologically or randomly. We opted for th
 <br></br>
 The following table presents the parameters of the deep neural network variants (i.e. with several hidden layers) chosen for Cedar and Graham clusters (for which training data is available).
 <br></br>
-<p align="center">
+<div align="center">
 <table>
   <tr>
    <td><strong>Hyperparameters</strong>
@@ -68,7 +68,7 @@ The following table presents the parameters of the deep neural network variants 
 </table>
 <i>Hyperparameters of deep neural networks selected for predicting queue time on Cedar and Graham clusters.
 </i>
-</p>
+</div>
 <br>
 These neural networks possess ReLU activations between layers. The use of attention and transformer models has been discarded because the data is non-sequential in nature.
 <br></br>
@@ -174,11 +174,11 @@ Here is the list of possible (hyper)parameters, as well as their default values:
 </table>
 
 <div style="text-align: justify">
-*Corresponds to a multi-layered deep neural network. The other valid possibility is linear for the linear regression model.
+* Corresponds to a multi-layered deep neural network. The other valid possibility is linear for the linear regression model.
 
-**Two values ​​are allowed: adam or sgd.
+** Two values ​​are allowed: adam or sgd.
 
-***Two values ​​are allowed: cedar or graham.
+*** Two values ​​are allowed: cedar or graham.
 <br><br>
 Here is an example of running the script from outside the project root:
 </div>

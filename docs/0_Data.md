@@ -19,7 +19,7 @@ Some variables are not used for training, either because they come from a linear
 
 ## Data distribution
 
-<div style="text-align: justify">The plot below shows the distribution of the variable to be predicted, _poll wait sec_, without transformation (top graph) and with a base-10 logarithmic transformation (bottom graph).
+<div style="text-align: justify">The plot below shows the distribution of the variable to be predicted, <i>poll_wait_sec</i>, without transformation (top graph) and with a base-10 logarithmic transformation (bottom graph).
 <br><br>
 <div align="center">
   <table>

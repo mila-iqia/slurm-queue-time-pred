@@ -12,7 +12,7 @@ A new parameter <code>test_day</code> selects the day used to test the model. Th
 <br><br>
 The following figure shows the average MSE (y-axis) with and without the standard deviation over the training and test set for a sample of experiments where the model was trained on past data. We used the 7-layer model described in <a href="docs/1_Methods.md"> Methods</a>. The x-axis represents each of the days selected for testing between the 21st and the last day of the dataset. 
 <br><br>
-<p align="center">
+<div align="center">
  <table>
   <tr>
    <td><img src="../results/previous_days_results/plots/cedar_average_MSE.png">
@@ -21,15 +21,13 @@ The following figure shows the average MSE (y-axis) with and without the standar
    </td>
   </tr>
  </table>
-</p>
-<p align="center">
  <i>Average training (green curve) and test (yellow curve) MSE on predictions from the 7-layer model when trained with the days before T = test day, with (right) and without (left) the standard deviation, using data from Cedar.
  </i>
-</p>
+</div>
 <br>
 The following figure shows the median MSE (y-axis) with the minimum and maximum values ​​as well as with the values ​​just above and below the median over the training and test set for the same sample of training experiments.
 <br><br>
-<p align="center">
+<div align="center">
  <table>
   <tr>
    <td><img src="../results/previous_days_results/plots/cedar_median_MSE_min_max.png">
@@ -38,11 +36,9 @@ The following figure shows the median MSE (y-axis) with the minimum and maximum 
    </td>
   </tr>
  </table>
-</p>
-<p align="center">
  <i>Median training (curve in green) and test (curve in yellow) MSE on predictions from the 7-layer model when trained with the days before T = day of test, with the minimum ​​and maximum values (right) and values ​​just below and just above the median (left), using data from Cedar.
  </i>
-</p>
+</div>
 <br>
 In the figures above, the results for the 66th day of testing have been omitted, since the mean, 16.9086, and median, 8.2979, squared error values ​​over the test set were too distant from the rest. Their presence made the graphs difficult to read. These outliers could be attributed to differences in job characteristics present on that day compared to those on other days of data.
 <br><br>
