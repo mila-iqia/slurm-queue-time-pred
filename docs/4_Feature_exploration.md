@@ -1,6 +1,6 @@
 # Feature exploration
 
-<div style="text-align: justify">One of the expectations of collaborators at the DRAC is to know the most significant features for predicting the waiting time of a job, for explainability purposes and to guide users on the choice of parameters for the <code>sbatch</code> and <code>salloc</code> commands when submitting jobs on compute clusters. Thus, we wanted to determine the features that best predict waiting time, that is those which, taken one at a time, produce the lowest MSE.
+<div align="justify">One of the expectations of collaborators at the DRAC is to know the most significant features for predicting the waiting time of a job, for explainability purposes and to guide users on the choice of parameters for the <code>sbatch</code> and <code>salloc</code> commands when submitting jobs on compute clusters. Thus, we wanted to determine the features that best predict waiting time, that is those which, taken one at a time, produce the lowest MSE.
 <br></br>
 The method we used to do this is to train a model with all the features individually, select the best one (the one that produces the lowest MSE), train the model with that feature and each of the unselected features, select the best combination of two features (including the one selected in the first step), and so on, until having selected the 10 best features and having trained the model with the combination of these.
 <br></br>
@@ -8,7 +8,7 @@ The method we used to do this is to train a model with all the features individu
 
 ## Results
 
-<div style="text-align: justify">The following figures show the results of the feature exploration with the linear model and the 7-layer neural network model used to make predictions on Cedar data. For each of the models, the curves of the training and test loss (MSE) according to the cumulative features for the training are presented.
+<div align="justify">The following figures show the results of the feature exploration with the linear model and the 7-layer neural network model used to make predictions on Cedar data. For each of the models, the curves of the training and test loss (MSE) according to the cumulative features for the training are presented.
 <br><br>
 <div align="center">
  <table>
@@ -45,7 +45,7 @@ We find that the features selected by each of the models and the order of select
 
 ## Code Documentation
 
-<div style="text-align: justify">To run a feature exploration experiment, run the <b>run_experiment.py</b> script from the <b>code.explore_features</b> module specifying the desired training (hyper)parameters, as listed in <a href="docs/1_Methods.md"> Methods</a>. The features argument does not apply. Here are the additional arguments:
+<div align="justify">To run a feature exploration experiment, run the <b>run_experiment.py</b> script from the <b>code.explore_features</b> module specifying the desired training (hyper)parameters, as listed in <a href="docs/1_Methods.md"> Methods</a>. The features argument does not apply. Here are the additional arguments:
 <br></br>
 </div>
 <table>
@@ -67,14 +67,14 @@ We find that the features selected by each of the models and the order of select
  </tr>
 </table>
 <br>
-<div style="text-align: justify">Here is an example of running the script from outside the project root:
+<div align="justify">Here is an example of running the script from outside the project root:
 </div>
 
 ```
 python3 slurm-queue-time-pred/code/explore_features/run_experiment.py --nbr_top_features=15 --output_dir=example_experiment
 ```
 
-<div style="text-align: justify">To generate the results of the best predictive features exploration, run the <b>report_results.py</b> script from the <b>code.explore_features</b> module using the same arguments as those used to launch the experiment. It is possible to choose a different number of accumulated features to produce the results files. An additional argument, synthetic_data, if present, allows the use of loss references (MSE) associated with synthetic data. The script will generate a JSON file containing the progression of training, validation and test losses as well as the frequency and average of times these losses deteriorated with the addition of a new feature. It will also generate three graphs representing each of the losses according to the accumulation of the best features.
+<div align="justify">To generate the results of the best predictive features exploration, run the <b>report_results.py</b> script from the <b>code.explore_features</b> module using the same arguments as those used to launch the experiment. It is possible to choose a different number of accumulated features to produce the results files. An additional argument, synthetic_data, if present, allows the use of loss references (MSE) associated with synthetic data. The script will generate a JSON file containing the progression of training, validation and test losses as well as the frequency and average of times these losses deteriorated with the addition of a new feature. It will also generate three graphs representing each of the losses according to the accumulation of the best features.
 <br></br>
 Here is an example of running the script from outside the project root:
 </div>

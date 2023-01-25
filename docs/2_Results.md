@@ -3,7 +3,7 @@
 
 ## Linear model
 
-<div style="text-align: justify">The losses calculated with the exact solution, on a base 10 logarithmic scale, are 0.3174 for training, 0.7462 for validation and 0.4134 for testing. 
+<div align="justify">The losses calculated with the exact solution, on a base 10 logarithmic scale, are 0.3174 for training, 0.7462 for validation and 0.4134 for testing. 
 <br></br>
 The following figure shows the predictions obtained with the least squares solution according to the true jobs’ queue times (left graph) and the predictions obtained after training the linear model according to the true jobs’ queue times (right graph). The black line that cuts each of the planes in half on the diagonal corresponds to the result that we would obtain if the model made no prediction errors. The red hatched lines are used to position real (non-logarithmic) wait time values on the x-axis.
 <br></br>
@@ -31,7 +31,7 @@ Overall, we find that the model trains correctly, since the predictions obtained
 
 ### With data from Cedar
 
-<div style="text-align: justify">The following figure shows the predictions obtained from the 10 training trials of the 7-layer model described in <a href="docs/1_Methods.md"> Methods</a> according to true wait times.
+<div align="justify">The following figure shows the predictions obtained from the 10 training trials of the 7-layer model described in <a href="docs/1_Methods.md"> Methods</a> according to true wait times.
 <br></br>
 <div align="center">
  <table>
@@ -57,13 +57,13 @@ The training, validation, and test losses calculated by taking the average of 10
  </i>
 </div>
 <br>
-The percentage of predictions lower than a factor of 2 times the targets is 38.19% and the percentage of predictions lower than a factor of 3 times the targets is 56.76%. Note that we are talking here about differences between predictions and original values ​​without logarithmic transformation. That is to say, for a job whose execution is predicted in 2 hours, there is about a 38% chance that the job will actually be running on the Slurm cluster in an interval of [30 minutes, 4 hours].
+The percentage of predictions lower than a factor of 2 times the targets is 38.19% and the percentage of predictions lower than a factor of 3 times the targets is 56.76%. Note that we are talking here about differences between predictions and original values ​​without logarithmic transformation. That is to say, for a job whose execution is predicted in 2 hours, there is about a 38% chance that the job will actually be running on the SLURM cluster in an interval of [30 minutes, 4 hours].
 <br><br>
 </div>
 
 ### With data from Graham
 
-<div style="text-align: justify">The following figure shows the predictions obtained from 10 training trials of the 6-layer model described in <a href="docs/1_Methods.md"> Methods</a> according to the true wait times.
+<div align="justify">The following figure shows the predictions obtained from 10 training trials of the 6-layer model described in <a href="docs/1_Methods.md"> Methods</a> according to the true wait times.
 <br><br>
 <div align="center">
  <table>
@@ -95,7 +95,7 @@ Values ​​below -5.0 are not shown for readability. These are 292 predictions
 
 ## Comparison with SLURM estimates
 
-<div style="text-align: justify">As a comparison, we can use the difference between the actual execution time of the jobs on the compute clusters and the value predicted by SLURM. This is equivalent to the difference between the actual and predicted waiting time. Indeed, SLURM provides an estimate based, among other things, on the time limit requested by the user for the job and the priority of other users’ jobs submitted afterwards. It is well known, however, that SLURM's estimation is grossly inaccurate.
+<div align="justify">As a comparison, we can use the difference between the actual execution time of the jobs on the compute clusters and the value predicted by SLURM. This is equivalent to the difference between the actual and predicted waiting time. Indeed, SLURM provides an estimate based, among other things, on the time limit requested by the user for the job and the priority of other users’ jobs submitted afterwards. It is well known, however, that SLURM's estimation is grossly inaccurate.
 <br></br>
 We determined that the mean difference, on a base-10 logarithmic scale, for n=53 estimates on the Cedar cluster is 3.2032, while for n=58 estimates on the Narval cluster it is 2.4870. To calculate these values, fictitious jobs were submitted on these clusters and for each of them, the estimated job execution start time and the actual execution start time were retrieved. A difference of 3.2032 corresponds to a factor of approximately 1597 times the targets and a difference of 2.4870 corresponds to a factor of approximately 307 times the targets.
 <br></br>
