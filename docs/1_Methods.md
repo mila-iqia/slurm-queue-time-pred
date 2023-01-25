@@ -78,7 +78,7 @@ We proceeded to hyperparameters optimization using Weights & Biases taking as cr
 
 ## Code Documentation
 
-<div style="text-align: justify">To run a model training experiment, run the <b>run_experiment.py</b> script from the <b>code.wait_time_prediction</b> module specifying the desired training parameters and hyperparameters.
+<div align="justify">To run a model training experiment, run the <b>run_experiment.py</b> script from the <b>code.wait_time_prediction</b> module specifying the desired training parameters and hyperparameters.
 <br></br>
 Here is the list of possible (hyper)parameters, as well as their default values:
 </div>
@@ -173,7 +173,7 @@ Here is the list of possible (hyper)parameters, as well as their default values:
  </tr>
 </table>
 
-<div style="text-align: justify">
+<div align="justify">
 * Corresponds to a multi-layered deep neural network. The other valid possibility is linear for the linear regression model.
 
 ** Two values ​​are allowed: adam or sgd.
