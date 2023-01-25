@@ -28,7 +28,7 @@ On average, our neural network model trained on data from the Cedar computing cl
 approximately 1 594 times closer to the jobs' actual wait times than Slurm's estimator. More than 50% of our model's predictions
 fall in the interval [ -2.69 * target, 2.69 * target ]. By our experimental measurements, when using Slurm's estimator the equivalent interval is [ -1596.61 * target, 1596.61 * target ] which makes Slurm's estimator useless in practice.
 <br></br>
-For a user X submitting a job to the cluster, the best predictors of that job's wait time appear to be the amount of memory, GPUs and CPU cores already in use by other jobs belonging to X.
+The best predictors of a job's wait time on the cluster appear to be the amount of memory, GPUs and CPU cores already in use on the computing cluster by other users' jobs at submission.
 
 
 ## Documentation
