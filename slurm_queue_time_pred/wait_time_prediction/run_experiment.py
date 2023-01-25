@@ -4,10 +4,10 @@ import numpy as np
 import time
 import os
 
-from code.wait_time_prediction.model import linearRegression, NN
-from code.wait_time_prediction.datasets import create_datasets, load_data
-from code.wait_time_prediction.plotting import plot_error_distribution, plot_predictions
-from code.wait_time_prediction.util import save_results_to_json, get_hparams_dict, evaluate_with_best_constant
+from slurm_queue_time_pred.wait_time_prediction.model import linearRegression, NN
+from slurm_queue_time_pred.wait_time_prediction.datasets import create_datasets, load_data
+from slurm_queue_time_pred.wait_time_prediction.plotting import plot_error_distribution, plot_predictions
+from slurm_queue_time_pred.wait_time_prediction.util import save_results_to_json, get_hparams_dict, evaluate_with_best_constant
 
 """
 W&B setup
@@ -21,8 +21,8 @@ wandb.init(project="mila-cc", entity="biancapopa")
 Configure script arguments
 """
 
-from code.wait_time_prediction import configlib
-from code.wait_time_prediction.configlib import config as C
+from slurm_queue_time_pred.wait_time_prediction import configlib
+from slurm_queue_time_pred.wait_time_prediction.configlib import config as C
 
 parser = configlib.add_parser("Run experiment config")
 parser.add_argument('--features', default="",

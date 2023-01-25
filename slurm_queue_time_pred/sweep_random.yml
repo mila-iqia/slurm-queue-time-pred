@@ -1,4 +1,4 @@
-program: code/wait_time_prediction/run_experiment.py
+program: slurm_queue_time_pred/wait_time_prediction/run_experiment.py
 method: random
 metric:
   goal: minimize

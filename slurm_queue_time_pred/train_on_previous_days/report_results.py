@@ -2,11 +2,11 @@ import os, json
 import numpy as np
 import matplotlib.pyplot as plt
 from operator import add, sub
-from code.wait_time_prediction.datasets import get_total_days, FIRST_TEST_DAY
-import code.train_on_previous_days.run_experiment as run # leave here
+from slurm_queue_time_pred.wait_time_prediction.datasets import get_total_days, FIRST_TEST_DAY
+import slurm_queue_time_pred.train_on_previous_days.run_experiment as run # leave here
 
-from code.wait_time_prediction import configlib
-from code.wait_time_prediction.configlib import config as C
+from slurm_queue_time_pred.wait_time_prediction import configlib
+from slurm_queue_time_pred.wait_time_prediction.configlib import config as C
 
 
 path_to_results = os.path.join(os.path.dirname(__file__), '../../results/previous_days_results')

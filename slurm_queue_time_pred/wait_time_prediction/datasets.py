@@ -8,7 +8,7 @@ import numpy as np
 import glob
 import os
 import pickle5 as pickle
-from code.wait_time_prediction.util import normalize, count_files_in_dir
+from slurm_queue_time_pred.wait_time_prediction.util import normalize, count_files_in_dir
 
 path_to_data = os.path.join(os.path.dirname(__file__), '../../data/synthetic_data')
 

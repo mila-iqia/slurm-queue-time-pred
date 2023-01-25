@@ -1,12 +1,12 @@
 import os, json
 import random
-from code.wait_time_prediction.datasets import get_total_days, FIRST_TEST_DAY
-from code.wait_time_prediction.run_experiment import run
-from code.wait_time_prediction.monitor import Monitor
-from code.wait_time_prediction.util import get_hparams_dict, save_results_to_json
+from slurm_queue_time_pred.wait_time_prediction.datasets import get_total_days, FIRST_TEST_DAY
+from slurm_queue_time_pred.wait_time_prediction.run_experiment import run
+from slurm_queue_time_pred.wait_time_prediction.monitor import Monitor
+from slurm_queue_time_pred.wait_time_prediction.util import get_hparams_dict, save_results_to_json
 
-from code.wait_time_prediction import configlib
-from code.wait_time_prediction.configlib import config as C
+from slurm_queue_time_pred.wait_time_prediction import configlib
+from slurm_queue_time_pred.wait_time_prediction.configlib import config as C
 
 parser = configlib.add_parser("Train on previous days config")
 parser.add_argument('-T', '--test_day', default=3, type=int,

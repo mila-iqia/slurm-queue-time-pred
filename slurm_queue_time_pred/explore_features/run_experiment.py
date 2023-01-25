@@ -1,11 +1,11 @@
 
 import random
-from code.explore_features.explore import explore_features
-from code.explore_features.explore_util import get_min_loss, get_current_dir_path, scan_files
-from code.wait_time_prediction.features import predicting_features
+from slurm_queue_time_pred.explore_features.explore import explore_features
+from slurm_queue_time_pred.explore_features.explore_util import get_min_loss, get_current_dir_path, scan_files
+from slurm_queue_time_pred.wait_time_prediction.features import predicting_features
 
-from code.wait_time_prediction import configlib
-from code.wait_time_prediction.configlib import config as C
+from slurm_queue_time_pred.wait_time_prediction import configlib
+from slurm_queue_time_pred.wait_time_prediction.configlib import config as C
 
 parser = configlib.add_parser("Explore in parallel config")
 parser.add_argument('-n', '--nbr_top_features', default=10, type=int,
