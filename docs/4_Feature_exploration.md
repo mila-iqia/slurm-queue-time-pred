@@ -71,7 +71,7 @@ We find that the features selected by each of the models and the order of select
 </div>
 
 ```
-python3 slurm-queue-time-pred/code/explore_features/run_experiment.py --nbr_top_features=15 --output_dir=example_experiment
+python3 slurm-queue-time-pred/slurm_queue_time_pred/explore_features/run_experiment.py --nbr_top_features=15 --output_dir=example_experiment
 ```
 
 <div align="justify">To generate the results of the best predictive features exploration, run the <b>report_results.py</b> script from the <b>slurm_queue_time_pred.explore_features</b> module using the same arguments as those used to launch the experiment. It is possible to choose a different number of accumulated features to produce the results files. An additional argument, synthetic_data, if present, allows the use of loss references (MSE) associated with synthetic data. The script will generate a JSON file containing the progression of training, validation and test losses as well as the frequency and average of times these losses deteriorated with the addition of a new feature. It will also generate three graphs representing each of the losses according to the accumulation of the best features.
@@ -80,5 +80,5 @@ Here is an example of running the script from outside the project root:
 </div>
 
 ```
-python3 slurm-queue-time-pred/code/explore_features/report_results.py --nbr_top_features=10 --output_dir=example_experiment --synthetic_data
+python3 slurm-queue-time-pred/slurm_queue_time_pred/explore_features/report_results.py --nbr_top_features=10 --output_dir=example_experiment --synthetic_data
 ```

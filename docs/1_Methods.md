@@ -184,5 +184,5 @@ Here is an example of running the script from outside the project root:
 </div>
 
 ```
-python3 slurm-queue-time-pred/code/wait_time_prediction/run_experiment.py --features=eligible_time,submit_time --model=linear -- learning_rate=0.00001 --batch_size=64 --optimizer=sgd --hidden_size=64 --nbr_layers=3 --l1=0.0001 --l2=0.0001 --mix_train_valid --cluster=graham
+python3 slurm-queue-time-pred/slurm_queue_time_pred/wait_time_prediction/run_experiment.py --features=eligible_time,submit_time --model=linear -- learning_rate=0.00001 --batch_size=64 --optimizer=sgd --hidden_size=64 --nbr_layers=3 --l1=0.0001 --l2=0.0001 --mix_train_valid --cluster=graham
 ```
