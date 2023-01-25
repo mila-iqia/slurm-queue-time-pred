@@ -3,7 +3,7 @@
 
 ## Data split
 
-<div style="text-align: justify">The test and validation sets each include 10% of the total number of days of data available, randomly sampled. The training set includes the remaining days. There is no overlap between data from different sets. Also, samples (jobs) belonging to the same day are part of the same set. We have chosen to separate by day rather than by task to avoid the absurd situation where we would share, between the training, validation and test sets, identical tasks submitted by the same user at the same time. This way of splitting the data would in this case lead to better learning by the model.
+<div style="text-align: justify">The test and validation sets each include 10% of the total number of days of data available, randomly sampled. The training set includes the remaining days. There is no overlap between data from different sets. Also, samples (jobs) belonging to the same day are part of the same set. We have chosen to separate by day rather than by job to avoid the absurd situation where we would share, between the training, validation and test sets, identical jobs submitted by the same user at the same time. This way of splitting the data would in this case lead to better learning by the model.
 <br></br>
 We had the choice to split the days chronologically or randomly. We opted for the second method, since it reduces the impact on the predictive performance of the variability that exists between jobs in the training and test sets. However, in the operating environment, training models with data from previous days is more realistic (see <a href="docs/3_Train_on_past_data">Training on Past Data</a>).
 <br></br>
