@@ -14,7 +14,7 @@ parser.add_argument('--output_dir', default=None,
                     help='Directory name for this parallel run.')
 
 
-def run():
+def run_experiment():
     """
     Scans current exploration directory to determine next task
     """
@@ -62,10 +62,10 @@ if __name__ == "__main__":
     print("Running with configuration:")
     configlib.print_config()
     
-    run()
+    run_experiment()
 
 
 """"
-python3 parallel_explore.py -n 15 --output_dir=example
+python3 run_experiment.py -n 15 --output_dir=example
 
 """

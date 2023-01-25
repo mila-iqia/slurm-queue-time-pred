@@ -1,8 +1,10 @@
+
+import json
+import matplotlib.pyplot as plt
+
 from slurm_queue_time_pred.explore_features.explore import get_results, get_deterioration_metrics
 from slurm_queue_time_pred.explore_features.explore_util import get_current_dir_path
 from slurm_queue_time_pred.explore_features import run_experiment # leave here
-import json
-import matplotlib.pyplot as plt
 
 from slurm_queue_time_pred.wait_time_prediction import configlib
 from slurm_queue_time_pred.wait_time_prediction.configlib import config as C

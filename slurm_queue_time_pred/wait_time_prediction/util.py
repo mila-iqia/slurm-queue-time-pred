@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 import json
+import torch
 
 
 def normalize(A, mus=None, sigmas=None):
@@ -115,3 +116,13 @@ def get_best_constant_for_y(loader):
 def count_files_in_dir(path_to_dir):
     """Returns number of files in a directory."""
     return len([name for name in os.listdir(path_to_dir) if os.path.isfile(os.path.join(path_to_dir, name))])
+
+
+def init_weights(layer, this_weights, this_bias):
+    """
+    Initializes weights and bias of linear layers
+    """
+    if isinstance(layer, torch.nn.Linear):
+        layer.weight.data = this_weights
+        if layer.bias is not None:
+            layer.bias.data.fill_(this_bias)

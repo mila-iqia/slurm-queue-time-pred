@@ -1,7 +1,9 @@
+
 import os, json
 import numpy as np
 import matplotlib.pyplot as plt
 from operator import add, sub
+
 from slurm_queue_time_pred.wait_time_prediction.datasets import get_total_days, FIRST_TEST_DAY
 import slurm_queue_time_pred.train_on_previous_days.run_experiment as run # leave here
 
@@ -352,6 +354,6 @@ if __name__ == "__main__":
 python3 report_results.py --cluster=cedar --learning_rate=0.001 --batch_size=128 --optimizer=adam --model=NN 
 --hidden_size=128 --nbr_layers=6 --mix_train_valid=True
 
-See run_experiment.py for default values
+See wait_time_prediction/run_experiment.py for default values
 
 """

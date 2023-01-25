@@ -1,6 +1,6 @@
 
 import matplotlib.pyplot as plt
-import random, math
+import random
 import os
 import numpy as np
 
@@ -62,15 +62,13 @@ def plot_error_distribution(y_true : list, y_pred : list, model : str):
     # Count number of errors below factor of 2 and 3
     num_errors = (sum(-np.log10(2) <= e <= np.log10(2) for e in error)/len(error) * 100, 
                   sum(-np.log10(3) <= e <= np.log10(3) for e in error)/len(error) * 100)    
-    print('Percent of errors below factor of 2 and 3: ', num_errors)
+    # print('Percent of errors below factor of 2 and 3: ', num_errors)
     
     # Plot error distribution
     plt.hist(error, bins=100, density=True)
     plt.title('Distribution of differences between log10(targets) and log10(predictions)')
     plt.xlabel('Differences')
     plt.ylabel('Frequency')
-    
-    plt.xticks(np.arange(math.floor(min(error)), math.ceil(max(error)), 0.5))
     
     plt.savefig(f'{path_to_results}/error_distribution_{model}.png')
     plt.close()

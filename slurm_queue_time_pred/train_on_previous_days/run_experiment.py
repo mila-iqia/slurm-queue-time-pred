@@ -78,7 +78,7 @@ def is_single_experiment_done(cluster : str, T : int, D_hparams):
     return single_experiment_done
 
 
-def run():
+def run_experiment():
     """
     As long as all trials for all test days are not done, this will keep running experiments 
     with random test day on specified cluster, using parameters passed as arguments to the script.
@@ -108,7 +108,7 @@ def run():
         save_results_to_json(D_results, val_loss, train_loss, test_loss, y_true, y_pred, output_file, path_to_results)
         
         if C['single_run']: break
-        T = orchestrate(cluster, random.randint(FIRST_TEST_DAY, get_total_days(cluster), D_results))
+        T = orchestrate(cluster, random.randint(FIRST_TEST_DAY, get_total_days(cluster)), D_results)
  
     
 def get_output_filename(cluster : str, T : int):
@@ -117,7 +117,7 @@ def get_output_filename(cluster : str, T : int):
         File's name string
     """
     
-    last_count = len([file for file in os.listdir(f'{path_to_results}') if file.startswith(f'{cluster}_T{T}') 
+    last_count = len([file for file in os.listdir(f'{path_to_results}') if file.startswith(f'{cluster}_T{T}_') 
                                                                         and file.endswith('.json')])
     current_count = str(last_count).zfill(2)
     
@@ -128,9 +128,9 @@ if __name__ == "__main__":
     configlib.parse(save_fname="last_arguments.txt")
     print("Running with configuration:")
     configlib.print_config()
-    run()
+    run_experiment()
 
 """
-python3 parallel_run.py -T 37 --lr=0.001 --nbr_layers=3 --batch_size=64
+python3 run_experiment.py -T 37 --lr=0.001 --nbr_layers=3 --batch_size=64
 
 """

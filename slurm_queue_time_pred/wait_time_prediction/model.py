@@ -1,7 +1,8 @@
 
 import torch
-import numpy as np
 
+
+# First model: linear regression
 class linearRegression(torch.nn.Module):
     def __init__(self, input_dim, output_dim):
         super(linearRegression, self).__init__()
@@ -11,6 +12,8 @@ class linearRegression(torch.nn.Module):
         out = self.linear(x)
         return out
 
+
+# Second model: deep neural network with X hidden layers
 class NN(torch.nn.Module):
     def __init__(self, input_size, output_size, hidden_size, nbr_layers):
         super(NN, self).__init__()
@@ -29,13 +32,4 @@ class NN(torch.nn.Module):
             x = self.relu(getattr(self, f"linear_{i}")(x))
         x = self.linear_out(x)
         return x   
-    
-def init_weights(layer, this_weights, this_bias):
-    """
-    Initializes weights and bias of linear layers
-    """
-    if isinstance(layer, torch.nn.Linear):
-        layer.weight.data = this_weights
-        if layer.bias is not None:
-            layer.bias.data.fill_(this_bias)
     

@@ -120,8 +120,8 @@ if __name__ == "__main__":
 
 """
 For CC cluster:
-python3 mila_cc/slurm_start_time_estimation/submit_fake_and_true_job_to_remote_cluster.py alaingui@narval.computecanada.ca ~/.ssh/id_rsa.pub
+python3 slurm-queue-time-pred/slurm_queue_time_pred/start_time_estimation/submit_fake_and_true_job_to_remote_cluster.py [username]@narval.computecanada.ca ~/.ssh/id_rsa.pub
 
 For mila cluster:
-python3 mila_cc/slurm_start_time_estimation/submit_fake_and_true_job_to_remote_cluster.py bianca.popa@login.server.mila.quebec:2222 ~/.ssh/id_rsa.pub
+python3 slurm-queue-time-pred/slurm_queue_time_pred/start_time_estimation/submit_fake_and_true_job_to_remote_cluster.py [username]@login.server.mila.quebec:2222 ~/.ssh/id_rsa.pub
 """

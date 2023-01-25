@@ -1,9 +1,9 @@
 
-from slurm_queue_time_pred.wait_time_prediction.run_experiment import run
-import json
-from slurm_queue_time_pred.explore_features.explore_util import get_current_dir_path, get_hparams_dict
 import os,json
 import uuid
+
+from slurm_queue_time_pred.wait_time_prediction.run_experiment import run
+from slurm_queue_time_pred.explore_features.explore_util import get_current_dir_path, get_hparams_dict
 
 
 def explore_features(next_feature : str, L_best_features, previous_val_loss, previous_train_loss, previous_test_loss, 
