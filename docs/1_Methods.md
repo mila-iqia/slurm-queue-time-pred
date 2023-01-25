@@ -78,7 +78,7 @@ We proceeded to hyperparameters optimization using Weights & Biases taking as cr
 
 ## Code Documentation
 
-<div align="justify">To run a model training experiment, run the <b>run_experiment.py</b> script from the <b>code.wait_time_prediction</b> module specifying the desired training parameters and hyperparameters.
+<div align="justify">To run a model training experiment, run the <b>run_experiment.py</b> script from the <b>slurm_queue_time_pred.wait_time_prediction</b> module specifying the desired training parameters and hyperparameters.
 <br></br>
 Here is the list of possible (hyper)parameters, as well as their default values:
 </div>

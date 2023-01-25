@@ -99,5 +99,5 @@ Values ​​below -5.0 are not shown for readability. These are 292 predictions
 <br></br>
 We determined that the mean difference, on a base-10 logarithmic scale, for n=53 estimates on the Cedar cluster is 3.2032, while for n=58 estimates on the Narval cluster it is 2.4870. To calculate these values, fictitious jobs were submitted on these clusters and for each of them, the estimated job execution start time and the actual execution start time were retrieved. A difference of 3.2032 corresponds to a factor of approximately 1597 times the targets and a difference of 2.4870 corresponds to a factor of approximately 307 times the targets.
 <br></br>
-Dummy job data for the Cedar and Narval clusters is located in the project's <b>code.start_time_estimation</b> module.
+Dummy job data for the Cedar and Narval clusters is located in the project's <b>slurm_queue_time_pred.start_time_estimation</b> module.
 </div>

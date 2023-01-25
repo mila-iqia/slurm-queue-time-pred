@@ -2,7 +2,7 @@
 
 ## Purpose
 
-The objective of the work is to allow a better orchestration of the jobs on the HPC Slurm system by predicting the waiting time for these jobs, i.e. the time between the moment when the user submits the job and the moment when the job starts to run, in order to improve the use of the computing clusters. Currently, Slurm provides an estimate of job start times, but the accuracy of these estimates is not considered acceptable by the DRAC. 
+The objective of the work is to allow a better orchestration of the jobs on the HPC SLURM system by predicting the waiting time for these jobs, i.e. the time between the moment when the user submits the job and the moment when the job starts to run, in order to improve the use of the computing clusters. Currently, SLURM provides an estimate of job start times, but the accuracy of these estimates is not considered acceptable by the DRAC. 
 <br></br>
 Deep learning, a machine learning technique, is leveraged to obtain wait time predictions. In particular, multi-layer perceptrons are used. More complex models, such as models with attention, were not used due to the limitations of the project, namely its duration and the nature of the data obtained.
 
@@ -16,17 +16,17 @@ export PYTHONPATH=$PYTHONPATH:`pwd`
 Then:
 ```
 # from inside this repo
-python3 wait_time_prediction/run_experiment.py
+python3 slurm_queue_time_pred/wait_time_prediction/run_experiment.py
 # from anywhere
-python3 -m wait_time_prediction.run_experiment 
+python3 -m slurm_queue_time_pred.wait_time_prediction.run_experiment 
 ```
 
 
 ## Main results
 
 On average, our neural network model trained on data from the Cedar computing cluster makes predictions 
-approximately 1 594 times closer to the jobs' actual wait times than Slurm's estimator. More than 50% of our model's predictions
-fall in the interval [ -2.69 * target, 2.69 * target ]. By our experimental measurements, when using Slurm's estimator the equivalent interval is [ -1596.61 * target, 1596.61 * target ] which makes Slurm's estimator useless in practice.
+approximately 1 594 times closer to the jobs' actual wait times than SLURM's estimator. More than 50% of our model's predictions
+fall in the interval [ -2.69 * target, 2.69 * target ]. By our experimental measurements, when using SLURM's estimator the equivalent interval is [ -1596.61 * target, 1596.61 * target ] which makes SLURM's estimator useless in practice.
 <br></br>
 The best predictors of a job's wait time on the cluster appear to be the amount of memory, GPUs and CPU cores already in use on the computing cluster by other users' jobs at submission.
 

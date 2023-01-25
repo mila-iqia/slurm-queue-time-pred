@@ -1,27 +1,27 @@
 # Data
 
-<div style="text-align: justify">The data is found in the <b>data</b> module at the root of the project and is separated into folders according to format and clusters.
+<div align="justify">The data is found in the <b>data</b> module at the root of the project and is separated into folders according to format and clusters.
 <br></br>
-Data collection is spread over several consecutive days. Every day at noon, a snapshot of the status of all uncompleted jobs on the cluster is captured. This moment of capturing the state of the cluster, or snapshot, is represented by the variable <i>poll_time</i>.
+Data collection is spread over several consecutive days. Every day at noon, a snapshot of the status of all uncompleted jobs on the cluster is captured. This moment of capturing the state of the cluster, or snapshot, is represented by the feature <i>poll_time</i>.
 <br></br>
-The variable to be predicted is <i>poll_wait_sec</i>, which corresponds to the difference, in seconds, between the moment when we take the snapshot and the moment when the job actually starts running on the compute cluster. This quantity cannot be determined yet at the time the snapshot is taken because we need to look into the future in order to determine when a given job will indeed start running. This requires some care in the collection of data, and it also creates two kinds of features: those that can be measured at the time that a job is submitted, and those that can only be known later. Naturally, we want to use the former to make predictions about the latter.
+The variable that we have to predict is <i>poll_wait_sec</i>, which corresponds to the difference, in seconds, between the moment when we take the snapshot and the moment when the job actually starts running on the compute cluster. This quantity cannot be determined yet at the time the snapshot is taken because we need to look into the future in order to determine when a given job will indeed start running. This requires some care in the collection of data, and it also creates two kinds of features: those that can be measured at the time that a job is submitted, and those that can only be known later. Naturally, we want to use the former to make predictions about the latter.
 <br></br>
 </div>
 
 ## Data composition
 
-<div style="text-align: justify">The data consists of csv files, each representing a snapshot of the state of jobs on the Cedar and Graham clusters at noon for a given day in the months of May, June and July 2021. In total, 68 files were provided for Cedar, and 61 files for Graham. Cedar's total record count for all days is 1,125,293, while Graham's is 334,748. A record corresponds to the state of a particular job. This state is described by 97 variables, among which 16 have been obtained by the <code>sacct</code> command and 81 are "augmented", i.e. they have been calculated from other variables or retrieved a posteriori. The 16 variables obtained by <code>sacct</code> characterize the current job, while the others characterize the state of the cluster with respect to the current job.
+<div align="justify">The data consists of csv files, each representing a snapshot of the state of jobs on the Cedar and Graham clusters at noon for a given day in the months of May, June and July 2021. In total, 68 files were provided for Cedar, and 61 files for Graham. Cedar's total record count for all days is 1,125,293, while Graham's is 334,748. A record corresponds to the state of a particular job. This state is described by 97 features, among which 16 have been obtained by the <code>sacct</code> command and 81 are "augmented", i.e. they have been calculated from other features or retrieved a posteriori. The 16 features obtained by <code>sacct</code> characterize the current job, while the others characterize the state of the cluster with respect to the current job.
 <br></br>
-Some variables are not used for training, either because they come from a linear transformation of <i>poll_wait_sec</i>, therefore to be excluded from the wait time prediction task, or because they are redundant (i.e. different units). Variables that are not available at prediction time are removed. In the end, 76 variables are used for training. These variables, which we will call features, are listed in the <b>features.py</b> file of the <b>code.wait_time_prediction</b> module.
+Some features are not used for training, either because they come from a linear transformation of <i>poll_wait_sec</i>, therefore to be excluded from the wait time prediction task, or because they are redundant (i.e. different units). Features that are not available at prediction time are removed. In the end, 76 features are used for training. These features are listed in the <b>features.py</b> file of the <b>slurm_queue_time_pred.wait_time_prediction</b> module.
 <br></br>
-The data has been anonymized by converting the user identity to an integer, as well as removing many of the identifying features that would otherwise be reported by Slurm. We wanted to keep the ability to determine if two jobs belonged to the same user by comparing the user id.
+The data has been anonymized by converting the user identity to an integer, as well as removing many of the identifying features that would otherwise be reported by SLURM. We wanted to keep the ability to determine if two jobs belonged to the same user by comparing the user id.
 <br></br>
 </div>
 
 
 ## Data distribution
 
-<div style="text-align: justify">The plot below shows the distribution of the variable to be predicted, <i>poll_wait_sec</i>, without transformation (top graph) and with a base-10 logarithmic transformation (bottom graph).
+<div align="justify">The plot below shows the distribution of the output variable, <i>poll_wait_sec</i>, without transformation (top graph) and with a base-10 logarithmic transformation (bottom graph).
 <br><br>
 <div align="center">
   <table>
@@ -42,7 +42,7 @@ From this observation came the idea of <i>predicting the order of magnitude of t
 <br><br>
 We find that with the logarithmic transformation (bottom graph), the distribution approximates more to a normal distribution. We chose log10 transformation for its ease of interpretation, but we could have chosen any other base without affecting the optimal solution. The MSE would have simply been scaled by a constant factor.
 <br><br>
-We have also chosen to standardize all the input variables, so that the values ​​are under the same scale. The motivation for this is to have a more stable optimization problem, which is different from our motivation to transform the variable to be predicted. To show this transformation, we represent below the distribution of <i>eligible_time</i>. This plot represents the distribution of this feature without transformation and with a standard normalization, so that the mean of the values is 0 and the variance is 1.
+We have also chosen to standardize all the features, so that the values ​​are under the same scale. The motivation for this is to have a more stable optimization problem, which is different from our motivation to transform the output variable. To show this transformation, we represent below the distribution of <i>eligible_time</i>. This plot represents the distribution of this feature without transformation and with a standard normalization, so that the mean of the values is 0 and the variance is 1.
 <br><br>
 <div align="center">
   <table>

@@ -48,7 +48,7 @@ Using the maximum days for training the model (T68), we obtain an average traini
 
 ## Code Documentation
 
-<div align="justify">To run a training experiment on past data, run the <b>run_experiment.py</b> script from the <b>code.train_on_previous_days</b> module specifying the desired training (hyper)parameters, as listed in <a href="docs/1_Methods.md"> Methods</a>. The features argument does not apply. Here are the additional arguments:
+<div align="justify">To run a training experiment on past data, run the <b>run_experiment.py</b> script from the <b>slurm_queue_time_pred.train_on_previous_days</b> module specifying the desired training (hyper)parameters, as listed in <a href="docs/1_Methods.md"> Methods</a>. The features argument does not apply. Here are the additional arguments:
 <br></br>
 </div>
 <table>
@@ -79,7 +79,7 @@ Here is an example of running the script from outside the project root:
 python3 slurm-queue-time-pred/code/train_on_previous_days/parallel_run.py --test_day=37 --nbr_layers=3 --single_run
 ```
 
-<div align="justify">To generate the results of the training on past days experiments, run the <b>report_results.py</b> script from the <b>code.train_on_previous_days</b> module specifying the (hyper)parameters of the experiments for which the results will be generated in the results.previous_days_results directory, as listed in <a href="docs/1_Methods.md"> Methods</a>. This will generate five graphs with, depending on the test day, the average GPU usage and the average duration of experiments, the average training and test MSE, the average training and test MSE with standard deviation, the median training and test MSE with minimum and maximum values ​​and finally the median training and test MSE with values ​​just above and just below.
+<div align="justify">To generate the results of the training on past days experiments, run the <b>report_results.py</b> script from the <b>slurm_queue_time_pred.train_on_previous_days</b> module specifying the (hyper)parameters of the experiments for which the results will be generated in the results.previous_days_results directory, as listed in <a href="docs/1_Methods.md"> Methods</a>. This will generate five graphs with, depending on the test day, the average GPU usage and the average duration of experiments, the average training and test MSE, the average training and test MSE with standard deviation, the median training and test MSE with minimum and maximum values ​​and finally the median training and test MSE with values ​​just above and just below.
 <br><br>
 Here is an example of running the script from outside the project root:
 </div>
