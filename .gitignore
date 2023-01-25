@@ -135,6 +135,6 @@ models/last_model.pth
 results/reports/*
 data/*/*
 !data/*/*/
-code/start_time_estimation/*/
+slurm_queue_time_pred/start_time_estimation/*/
 results/previous_days_results/*
 !results/previous_days_results/*/
