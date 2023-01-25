@@ -14,6 +14,8 @@ The variable to be predicted is <i>poll_wait_sec</i>, which corresponds to the d
 <br></br>
 Some variables are not used for training, either because they come from a linear transformation of <i>poll_wait_sec</i>, therefore to be excluded from the wait time prediction task, or because they are redundant (i.e. different units). Variables that are not available at prediction time are removed. In the end, 76 variables are used for training. These variables, which we will call features, are listed in the <b>features.py</b> file of the <b>code.wait_time_prediction</b> module.
 <br></br>
+The data has been anonymized by converting the user identity to an integer, as well as removing many of the identifying features that would otherwise be reported by Slurm. We wanted to keep the ability to determine if two jobs belonged to the same user by comparing the user id.
+<br></br>
 </div>
 
 
