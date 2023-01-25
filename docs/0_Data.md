@@ -5,8 +5,6 @@
 Data collection is spread over several consecutive days. Every day, at the same time, a snapshot of the status of all uncompleted jobs on the cluster is captured. This moment of capturing the state of the cluster, or snapshot, is represented by the variable <i>poll_time</i>.
 <br></br>
 The variable to be predicted is <i>poll_wait_sec</i>, which corresponds to the difference, in seconds, between the moment when we take the snapshot and the moment when the job actually starts running on the compute cluster. This quantity cannot be determined yet at the time the snapshot is taken because we need to look into the future in order to determine when a given job will indeed start running. This requires some care in the collection of data, and it also creates two kinds of features: those that can be measured at the time that a job is submitted, and those that can only be known later. Naturally, we want to use the former to make predictions about the latter.
-
-We have centered the task of prediction around the feature <i>poll_wait_sec</i> because it is equivalent to predicting the wait time from the time that a job is submitted.
 <br></br>
 </div>
 
