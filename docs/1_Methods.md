@@ -13,9 +13,9 @@ After taking all these precautions, we still have a decision to make about split
 
 ## Choice of models
 
-<div align="justify">The models used to predict the waiting time of jobs on computing clusters are described here. We first implemented a linear regression model. The advantage of this model is that it is simple to implement and that it makes it possible to verify that the inputs and outputs of the system are correct. Additionally, it is possible to calculate the exact solution to the linear problem using least squares, since the mean square error (MSE) or loss effectively corresponds to the error rate. This provides a benchmark for the minimum loss expected after training.
+<div align="justify">We started with a linear regression model to provide us with a good comparative baseline. This has the added advantage that it can be used to validate the correctness of our code because the exact solution to the least squares problem is known. We then trained neural networks comprised of a sequence of dense layers that all have the same number of hidden units and ReLU activation functions. By comparing them to the baseline we can assess whether there are gains made by using neural networks.
 <br></br>
-The following table presents the architecture and training hyperparameters of the neural network chosen. We have done a separate hyperparameter optimization sweep for the Cedar and Graham clusters because we wanted to train one model for each of the two data source.
+The following table shows the architecture and training hyperparameters of the neural networks selected. We have done a separate hyperparameter optimization sweep for the Cedar and Graham clusters because we wanted to train one model for each of the two data source.
 <br></br>
 <div align="center">
 <table>
@@ -72,10 +72,11 @@ The following table presents the architecture and training hyperparameters of th
 </i>
 </div>
 <br>
-These neural networks possess ReLU activations between layers. The use of attention and transformer models has been discarded because the data is non-sequential in nature.
+We proceeded to hyperparameters optimization (see file `sweep_random.yml`) using Weights & Biases taking as criterion the validation loss. In total, five hyperparameters were optimized: the learning rate, the number of layers, the number of hidden neurons per layer as well as the L1 and L2 regularization coefficients. Ten trials of training each model were performed to calculate the loss on the training, validation and test sets. Then, the predictions of the 10 trials were combined to obtain the distribution of the differences between the predictions and the actual wait time values.
 <br></br>
-We proceeded to hyperparameters optimization using Weights & Biases taking as criterion the validation loss. In total, five hyperparameters were optimized: the learning rate, the number of layers, the number of hidden neurons per layer as well as the L1 and L2 regularization coefficients. Ten trials of training each model were performed to calculate the loss on the training, validation and test sets. Then, the predictions of the 10 trials were combined to obtain the distribution of the differences between the predictions and the actual wait time values.
+It is worth noting that we did not go the route of modeling the data as time series in part because the nature of the Slurm jobs makes it hard to frame it like such, but also because the original data collection was set up for making predictions for each job in isolation. Indeed, the features of every job is augmented with extra features that represent the state of the cluster precisely so that predictions can be made without considering other external factors.
 <br></br>
+
 </div>
 
 ## Code Documentation
@@ -178,9 +179,9 @@ Here is the list of possible (hyper)parameters, as well as their default values:
 <div align="justify">
 * Corresponds to a multi-layered deep neural network. The other valid possibility is linear for the linear regression model.
 
-** Two values ​​are allowed: adam or sgd.
+** Two values are allowed: adam or sgd.
 
-*** Two values ​​are allowed: cedar or graham.
+*** Two values are allowed: cedar or graham.
 <br><br>
 Here is an example of running the script from outside the project root:
 </div>
