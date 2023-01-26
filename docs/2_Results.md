@@ -43,7 +43,7 @@ Overall, we find that the model trains correctly, since the predictions obtained
 </div>
 <br>
 
-The training, validation, and test losses calculated by taking the average of 10 training runs of the model. These are the MSE based on the differences between `log10(pred)` and `log10(target)` values.
+The training, validation, and test losses are calculated by taking the average of 10 training runs of the model. These are the MSE based on the differences between `log10(pred)` and `log10(target)` values.
 
 <div align="center">
  
@@ -93,7 +93,19 @@ Note that we are talking here about differences between predictions and original
  </i>
 </div>
 <br>
-The training, validation, and test losses calculated by taking the average of 10 training runs of the model, on a base-10 logarithmic scale, are 0.2579, 0.4332, and 0.6583, respectively. The following histogram shows the distribution of differences for the 10 model training runs.
+The training, validation, and test losses are calculated by taking the average of 10 training runs of the model. These are the MSE based on the differences between `log10(pred)` and `log10(target)` values.
+
+<div align="center">
+ 
+| | MSE on log10 values |
+|-|---------------------|
+|train| 0.2579 |
+|valid| 0.4332 |
+|test|  0.6583 |
+
+</div>
+<br><br>
+The following histogram shows the distribution of differences for the 10 model training runs.
 <br><br>
 <div align="center">
  <table>
@@ -117,18 +129,17 @@ Values below -5.0 are not shown for readability. These are 292 predictions below
 We determined that the mean difference, on a base-10 logarithmic scale, for n=53 estimates on the Cedar cluster is 3.2032, while for n=58 estimates on the Narval cluster it is 2.4870. To calculate these values, fictitious jobs were submitted on these clusters and for each of them, the estimated job execution start time and the actual execution start time were retrieved. A difference of 3.2032 corresponds to approximately 1597 times the targets and a difference of 2.4870 corresponds to approximately 307 times the targets.
 
 Here is a resume of the comparison between SLURM's estimator and our models' performance:
-
+<br></br>
 <div align="center">
 
-|| SLURM | Neural network models |
-|-|------|------------------|
+|| SLURM| |Neural network models ||
+|---|----|------|-----|------|
 ||Cedar|Narval|Cedar| Graham|
 |Number of predictions| 53 | 58 | 429,220 | 150,420 |
-|Mean difference| 3.2032 | 2.4870 | 0.4299 | 0.6583 | 
+|Mean difference| 3.2032 | 2.4870 | 0.4299 | 0.6583 |
 |Intervals| [0.0006*t, 1596.61*t] | [0.0033*t, 306.9*t] | [0.37*t, 2.69*t] | [0.22*t, 4.55*t] |
 
 </div>
 
-<br></br>
 Dummy job data for the Cedar and Narval clusters is located in the project's <b>slurm_queue_time_pred.start_time_estimation</b> module.
 </div>
