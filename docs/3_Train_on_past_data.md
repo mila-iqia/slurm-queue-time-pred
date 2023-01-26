@@ -1,16 +1,16 @@
 # Training on Past Data
 
-<div align="justify">Rather than randomly choosing test days from the dataset, another approach is to train the model on all days prior to the test day. In the normal operating environment, only past data is available for training. The model should make predictions about jobs that have not yet been executed. This chronological approach gives us performances that are more akin to those that we could observe in the normal environment.
+<div align="justify">Rather than randomly choosing test days from the dataset, another approach is to train the model on all days prior to the test day. In the normal operating environment, only past data is available for training. The model should make predictions about jobs that have not yet been executed. This chronological approach gives us performances that are more akin to those that we could observe in a production environment.
 <br></br>
-A new parameter <code>test_day</code> selects the day used to test the model. The days preceding the test day will be part of either the validation set or the training set, in a ratio of 20% and 80% respectively. The designation of either set is randomized to ensure that the distribution of the training and validation day data is similar.
+A new parameter <code>test_day</code> selects the day used to test the model. The days preceding the test day will be part of either the validation set or the training set, in a ratio of 20% and 80% respectively. The designation of either set is randomized to ensure that the distribution of the training and validation day data is similar. Days that come after <code>test_day</code> are ignored completely.
 <br></br>
 </div>
 
 ## Results
 
-<div align="justify">This section presents the results obtained for each of the test days between the 21st and the last day of data from the Cedar cluster. Rather than testing the model on the last day only, we chose a range of test days to account for potential variability in jobs on the last day compared to previous days. The range starts on the 21st day to have enough data for training. 
+<div align="justify">This section presents the results obtained for each of the test days between the 21st and the last day of data from the Cedar cluster. Rather than testing the model on the last day only, we chose a range of test days to account for potential variability in jobs on the last day compared to previous days. We decided to explore values of <code>test_day>=21</code> in order to have sufficient data for training. 
 <br><br>
-The following figure shows the average MSE (y-axis) with and without the standard deviation over the training and test set for a sample of experiments where the model was trained on past data. We used the 7-layer model described in <a href="docs/1_Methods.md"> Methods</a>. The x-axis represents each of the days selected for testing between the 21st and the last day of the dataset. 
+The following figure shows the average MSE (y-axis) with and without the standard deviation over the training and test set for a sample of experiments where the model was trained on past data. We used the 7-layer model described in <a href="1_Methods.md"> Methods</a>. The x-axis represents each of the days selected for testing between the 21st and the last day of the dataset. 
 <br><br>
 <div align="center">
  <table>
@@ -25,7 +25,7 @@ The following figure shows the average MSE (y-axis) with and without the standar
  </i>
 </div>
 <br>
-The following figure shows the median MSE (y-axis) with the minimum and maximum values ​​as well as with the values ​​just above and below the median over the training and test set for the same sample of training experiments.
+The following figure shows the median MSE (y-axis) with the minimum and maximum values as well as with the values just above and below the median over the training and test set for the same sample of training experiments.
 <br><br>
 <div align="center">
  <table>
