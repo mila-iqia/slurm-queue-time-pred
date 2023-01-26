@@ -74,7 +74,7 @@ If we express that in terms of our original units of time, we have that:
 - 56.76% of predicted *wait_time* falls into the interval [0.33*t, 3.0*t] with t being the real wait time in seconds.
 
 <br>
-Note that we are talking here about differences between predictions and original values without logarithmic transformation. That is to say, for a job whose execution is predicted in 2 hours, there is about a 38% chance that the job will actually be running on the SLURM cluster in an interval of [30 minutes, 4 hours].
+Note that we are talking here about differences between predictions and original values without logarithmic transformation. That is to say, for a job whose execution is predicted in 2 hours, there is about a 38% chance that the job will actually be running on the SLURM cluster in an interval of [1 hour, 4 hours].
 <br><br>
 </div>
 
