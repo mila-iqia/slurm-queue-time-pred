@@ -3,19 +3,19 @@
 
 ## Data split
 
-<div align="justify">The test and validation sets each include 10% of the total number of days of data available, randomly sampled. The training set includes the remaining days. In the original dataset, there were many jobs that were included in more than one day/snapshoot simply due to the fact that they stayed in the queue for more than 24h. This could result in the same job being included in both the train and test set, so we had to pre-process the data to avoid such situations. The end result is that a given job will now be found only in the snapshot of the day when the job was submitted.
+<div align="justify">The test and validation sets each include 10% of the total number of days of data available, randomly sampled. The training set includes the remaining days. In the original dataset, there were many jobs that were included in more than one day/snapshot simply due to the fact that they stayed in the queue for more than 24h. This could result in the same job being included in both the train and test set, so we had to pre-process the data to avoid such situations. The end result is that a given job will now be found only in the snapshot of the day when the job was submitted.
 <br></br>
 This also protects us from another bad situation that could occur if we had a user submit 100 identical jobs in a batch and those jobs ended up being distributed across all train/valid/test sets. A simple prediction algorithm can be devised in such a way by making predictions for the queue time of a job by comparing it with other jobs in the training set submitted at the same time (thus probably in the same batch of many identical jobs). This has to be avoided because it does not lead to a proper system that could be deployed in practice. 
 <br></br>
-After taking all these precautions, we still have a decision to make about splitting the days chronologically or randomly amongst train/valid/test sets. We opted for the second method because, given our limited data, it dimished the overall variance in the project. In actual use in production we would train on all the past data and make predictions for today's jobs. The performance on "today's jobs" changes based on whether a day contains jobs that are easy or hard to predict. For this project, if we took "today" to correspond the last day in our dataset, we would be at the mercy of the particular quirks from jobs of that day. This is one of the reasons why we instead decided to assign entire days to train/valid/test without following the chronological order. (see <a href="docs/3_Train_on_past_data">Training on Past Data</a>).
+After taking all these precautions, we still have a decision to make about splitting the days chronologically or randomly amongst train/valid/test sets. We opted for the second method because, given our limited data, it diminished the overall variance in the project. In actual use in production we would train on all the past data and make predictions for today's jobs. The performance on "today's jobs" changes based on whether a day contains jobs that are easy or hard to predict. For this project, if we took "today" as the last day in our dataset, we would be at the mercy of the particular quirks from jobs of that day. This is one of the reasons why we instead decided to assign entire days to train/valid/test without following the chronological order (see <a href="docs/3_Train_on_past_data">Training on Past Data</a>).
 <br></br>
 </div>
 
 ## Choice of models
 
-<div align="justify">We started with a linear regression model to provide us with a good comparative baseline. This has the added advantage that it can be used to validate the correctness of our code because the exact solution to the least squares problem is known. We then trained neural networks comprised of a sequence of dense layers that all have the same number of hidden units and ReLU activation functions. By comparing them to the baseline we can assess whether there are gains made by using neural networks.
+<div align="justify">We started with a linear regression model to provide us with a good comparative baseline. This has the added advantage that it can be used to validate the correctness of our code because the exact solution to the least squares problem is known. We then trained neural networks consisting of a sequence of dense layers that all have the same number of hidden units and ReLU activation functions. By comparing them to the baseline we can assess whether there are gains made by using neural networks.
 <br></br>
-The following table shows the architecture and training hyperparameters of the neural networks selected. We have done a separate hyperparameter optimization sweep for the Cedar and Graham clusters because we wanted to train one model for each of the two data source.
+The following table shows the architecture and training hyperparameters of the neural networks selected. We have done a separate hyperparameter optimization sweep for the Cedar and Graham clusters because we wanted to train one model for each of the two data sources.
 <br></br>
 <div align="center">
 <table>
@@ -68,13 +68,13 @@ The following table shows the architecture and training hyperparameters of the n
    </td>
   </tr>
 </table>
-<i>Hyperparameters of deep neural networks selected for predicting queue time on Cedar and Graham clusters.
+<i>Hyperparameters of neural networks selected for predicting queue time on Cedar and Graham clusters.
 </i>
 </div>
 <br>
 We proceeded to hyperparameters optimization (see file `sweep_random.yml`) using Weights & Biases taking as criterion the validation loss. In total, five hyperparameters were optimized: the learning rate, the number of layers, the number of hidden neurons per layer as well as the L1 and L2 regularization coefficients. Ten trials of training each model were performed to calculate the loss on the training, validation and test sets. Then, the predictions of the 10 trials were combined to obtain the distribution of the differences between the predictions and the actual wait time values.
 <br></br>
-It is worth noting that we did not go the route of modeling the data as time series in part because the nature of the Slurm jobs makes it hard to frame it like such, but also because the original data collection was set up for making predictions for each job in isolation. Indeed, the features of every job is augmented with extra features that represent the state of the cluster precisely so that predictions can be made without considering other external factors.
+It is worth noting that we did not go the route of modeling the data as time series in part because the nature of the SLURM jobs makes it hard to frame it like such, but also because the original data collection was set up for making predictions for each job in isolation. Indeed, the features of every job are augmented with extra features that represent the state of the cluster precisely so that predictions can be made without considering other external factors.
 <br></br>
 
 </div>
@@ -177,7 +177,7 @@ Here is the list of possible (hyper)parameters, as well as their default values:
 </table>
 
 <div align="justify">
-* Corresponds to a multi-layered deep neural network. The other valid possibility is linear for the linear regression model.
+* Corresponds to a multi-layered neural network. The other valid possibility is linear for the linear regression model.
 
 ** Two values are allowed: adam or sgd.
 
