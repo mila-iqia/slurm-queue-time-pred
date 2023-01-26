@@ -10,18 +10,18 @@ Deep learning, a machine learning technique, is leveraged to obtain wait time pr
 
 ## Setup
 
-<div align="justify">Execute following command at root of project (inside slurm-queue-time-pred) or do your own thing here if you want to run from elsewhere:
+<div align="justify">The code can be executed either from this directory (same path as this README.md), or by setting the <code>PYTHONPATH</code> environment variable.
 </div>
 
 ```
 export PYTHONPATH=$PYTHONPATH:`pwd`
+# from anywhere
+python3 -m slurm_queue_time_pred.wait_time_prediction.run_experiment 
 ```
-Then:
+Alternatively,
 ```
 # from inside this repo
 python3 slurm_queue_time_pred/wait_time_prediction/run_experiment.py
-# from anywhere
-python3 -m slurm_queue_time_pred.wait_time_prediction.run_experiment 
 ```
 
 
