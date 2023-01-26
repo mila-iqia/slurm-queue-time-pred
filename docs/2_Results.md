@@ -44,7 +44,7 @@ Overall, we find that the model trains correctly, since the predictions obtained
 <br>
 
 The training, validation, and test losses are calculated by taking the average of 10 training runs of the model. These are the MSE based on the differences between `log10(pred)` and `log10(target)` values.
-
+<br><br>
 <div align="center">
  
 | | MSE on log10 values |
@@ -55,7 +55,6 @@ The training, validation, and test losses are calculated by taking the average o
 
 </div>
 
-<br><br>
 <div align="center">
  <table>
   <tr>
@@ -94,7 +93,7 @@ Note that we are talking here about differences between predictions and original
 </div>
 <br>
 The training, validation, and test losses are calculated by taking the average of 10 training runs of the model. These are the MSE based on the differences between `log10(pred)` and `log10(target)` values.
-
+<br><br>
 <div align="center">
  
 | | MSE on log10 values |
@@ -104,7 +103,7 @@ The training, validation, and test losses are calculated by taking the average o
 |test|  0.6583 |
 
 </div>
-<br><br>
+
 The following histogram shows the distribution of differences for the 10 model training runs.
 <br><br>
 <div align="center">
@@ -137,7 +136,7 @@ Here is a resume of the comparison between SLURM's estimator and our models' per
 ||Cedar|Narval|Cedar| Graham|
 |Number of predictions| 53 | 58 | 429,220 | 150,420 |
 |Mean difference| 3.2032 | 2.4870 | 0.4299 | 0.6583 |
-|Intervals| [0.0006*t, 1596.61*t] | [0.0033*t, 306.9*t] | [0.37*t, 2.69*t] | [0.22*t, 4.55*t] |
+|Interval of >50% of predictions| [0.0006*t, 1596.61*t] | [0.0033*t, 306.9*t] | [0.37*t, 2.69*t] | [0.22*t, 4.55*t] |
 
 </div>
 
