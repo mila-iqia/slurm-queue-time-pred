@@ -5,24 +5,22 @@
 
 <div align="justify">The MSE losses calculated with the exact solution, on a base 10 logarithmic scale, are 0.3174 for training, 0.7462 for validation and 0.4134 for testing. 
 <br></br>
-The following figure shows the predictions obtained with the least squares solution according to the true jobs’ queue times (left graph) and the predictions obtained after training the linear model according to the true jobs’ queue times (right graph). The black line that cuts each of the planes in half on the diagonal corresponds to the result that we would obtain if the model made no prediction errors. The red hatched lines are used to position real (non-logarithmic) wait time values on the x-axis.
+The following plot shows the predictions obtained after training the linear model according to the true jobs’ queue times (right graph). The black line that cuts the plane in half on the diagonal corresponds to the result that we would obtain if the model made no prediction errors. The red hatched lines are used to position real (non-logarithmic) wait time values on the x-axis.
 <br></br>
 <div align="center">
  <table>
   <tr>
-   <td><img src="../results/plots/predictions_plot_all_lstsqr.png">
-   </td>
    <td><img src="../results/plots/predictions_plot_all_linear.png">
    </td>
   </tr>
  </table>
- <i>Predictions obtained with the least squares solution (left) and after training the linear model (right). All examples from the Cedar dataset are included.
+ <i>Predictions obtained with the linear model, after training on Cedar data.
  </i>
 </div>
 <br>
 The training, validation and test losses with the linear model, on a base 10 logarithmic scale, are 0.4046, 0.8315 and 0.4224 respectively. We see in the figure above that the model has trouble predicting values that are below 3, which corresponds to about 20 minutes of waiting (10<sup>3</sup> seconds = 20 minutes). Indeed, few examples of jobs with a waiting time (poll_wait_sec) of 20 minutes or less are present in the dataset, which explains this difficulty. 
 <br></br>
-Overall, we find that the model trains correctly, since the predictions obtained after training are very close to the predictions obtained with the least squares.
+Overall, we find that the model trains correctly, since the predictions obtained after training are very close to the predictions obtained with the least squares (exact) solution.
 <br></br>
 </div>
 
