@@ -29,7 +29,7 @@ Overall, we find that the model trains correctly, since the predictions obtained
 
 ### With data from Cedar
 
-<div align="justify">The following figure shows the predictions obtained from the 10 training trials of the 7-layer model described in <a href="1_Methods.md"> Methods</a> according to true wait times.
+<div align="justify">The following figure shows the predictions obtained from the 10 separate training runs of the 7-layer model described in <a href="1_Methods.md"> Methods</a> according to true wait times.
 <br></br>
 <div align="center">
  <table>
@@ -43,7 +43,7 @@ Overall, we find that the model trains correctly, since the predictions obtained
 </div>
 <br>
 
-The training, validation, and test losses calculated by taking the average of 10 training trials of the model. These are the MSE based on the differences between `log10(pred)` and `log10(target)` values.
+The training, validation, and test losses calculated by taking the average of 10 training runs of the model. These are the MSE based on the differences between `log10(pred)` and `log10(target)` values.
 
 <div align="center">
  
@@ -80,7 +80,7 @@ Note that we are talking here about differences between predictions and original
 
 ### With data from Graham
 
-<div align="justify">The following figure shows the predictions obtained from 10 training trials of the 6-layer model described in <a href="1_Methods.md"> Methods</a> according to the true wait times.
+<div align="justify">The following figure shows the predictions obtained from 10 separate training runs of the 6-layer model described in <a href="1_Methods.md"> Methods</a> according to the true wait times.
 <br><br>
 <div align="center">
  <table>
@@ -93,7 +93,7 @@ Note that we are talking here about differences between predictions and original
  </i>
 </div>
 <br>
-The training, validation, and test losses calculated by taking the average of 10 training trials of the model, on a base-10 logarithmic scale, are 0.2579, 0.4332, and 0.6583, respectively. The following histogram shows the distribution of differences for the 10 model training trials.
+The training, validation, and test losses calculated by taking the average of 10 training runs of the model, on a base-10 logarithmic scale, are 0.2579, 0.4332, and 0.6583, respectively. The following histogram shows the distribution of differences for the 10 model training runs.
 <br><br>
 <div align="center">
  <table>
@@ -102,11 +102,11 @@ The training, validation, and test losses calculated by taking the average of 10
    </td>
   </tr>
  </table>
- <i>Distribution of differences (in log10) between predictions and actual values of wait time for 10 training repetitions of the 6-layer neural network model.
+ <i>Distribution of differences (in log10) between predictions and actual values of wait time for 10 training runs of the 6-layer neural network model.
  </i>
 </div>
 <br>
-Values below -5.0 are not shown for readability. These are 292 predictions below -5.0 that have been omitted from the histogram above out of a total of 150,420. As before, we can calculate the percentage of predictions below a factor of 2 times the targets and a factor of 3 times the targets. This percentage is 41.60% and 59.89% respectively.
+Values below -5.0 are not shown for readability. These are 292 predictions below -5.0 that have been omitted from the histogram above out of a total of 150,420. As before, we can calculate the percentage of predictions that fall into the intervals [0.50*t, 2.0*t] and [0.33*t, 3.0*t]. This percentage is 41.60% and 59.89% respectively.
 <br><br>
 </div>
 
@@ -114,7 +114,21 @@ Values below -5.0 are not shown for readability. These are 292 predictions below
 
 <div align="justify">As a comparison, we can use the difference between the actual execution time of the jobs on the compute clusters and the value predicted by SLURM. This is equivalent to the difference between the actual and predicted waiting time. Indeed, SLURM provides an estimate based, among other things, on the time limit requested by the user for the job and the priority of other users’ jobs submitted afterwards. It is well known, however, that SLURM's estimation is grossly inaccurate.
 <br></br>
-We determined that the mean difference, on a base-10 logarithmic scale, for n=53 estimates on the Cedar cluster is 3.2032, while for n=58 estimates on the Narval cluster it is 2.4870. To calculate these values, fictitious jobs were submitted on these clusters and for each of them, the estimated job execution start time and the actual execution start time were retrieved. A difference of 3.2032 corresponds to a factor of approximately 1597 times the targets and a difference of 2.4870 corresponds to a factor of approximately 307 times the targets.
+We determined that the mean difference, on a base-10 logarithmic scale, for n=53 estimates on the Cedar cluster is 3.2032, while for n=58 estimates on the Narval cluster it is 2.4870. To calculate these values, fictitious jobs were submitted on these clusters and for each of them, the estimated job execution start time and the actual execution start time were retrieved. A difference of 3.2032 corresponds to approximately 1597 times the targets and a difference of 2.4870 corresponds to approximately 307 times the targets.
+
+Here is a resume of the comparison between SLURM's estimator and our models' performance:
+
+<div align="center">
+
+|| SLURM | Neural network models |
+|-|------|------------------|
+||Cedar|Narval|Cedar| Graham|
+|Number of predictions| 53 | 58 | 429,220 | 150,420 |
+|Mean difference| 3.2032 | 2.4870 | 0.4299 | 0.6583 | 
+|Intervals| [0.0006*t, 1596.61*t] | [0.0033*t, 306.9*t] | [0.37*t, 2.69*t] | [0.22*t, 4.55*t] |
+
+</div>
+
 <br></br>
 Dummy job data for the Cedar and Narval clusters is located in the project's <b>slurm_queue_time_pred.start_time_estimation</b> module.
 </div>
