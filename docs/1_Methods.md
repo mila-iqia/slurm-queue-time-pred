@@ -15,7 +15,7 @@ After taking all these precautions, we still have a decision to make about split
 
 <div align="justify">The models used to predict the waiting time of jobs on computing clusters are described here. We first implemented a linear regression model. The advantage of this model is that it is simple to implement and that it makes it possible to verify that the inputs and outputs of the system are correct. Additionally, it is possible to calculate the exact solution to the linear problem using least squares, since the mean square error (MSE) or loss effectively corresponds to the error rate. This provides a benchmark for the minimum loss expected after training.
 <br></br>
-The following table presents the parameters of the deep neural network variants (i.e. with several hidden layers) chosen for Cedar and Graham clusters (for which training data is available).
+The following table presents the architecture and training hyperparameters of the neural network chosen. We have done a separate hyperparameter optimization sweep for the Cedar and Graham clusters because we wanted to train one model for each of the two data source.
 <br></br>
 <div align="center">
 <table>
