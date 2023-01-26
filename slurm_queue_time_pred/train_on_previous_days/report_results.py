@@ -55,8 +55,8 @@ def report_results(cluster : str, D_hparams : dict):
     
     L_mean_train_MSE, L_mean_test_MSE, L_mean_gpu_usage, L_mean_time_elapsed, L_std_train_MSE, L_std_test_MSE, \
     L_median_train_MSE, L_median_test_MSE, L_min_train_MSE, L_max_train_MSE, L_min_test_MSE, L_max_test_MSE, \
-    L_above_mid_train_MSE, L_mid_train_MSE, L_below_mid_train_MSE, L_above_mid_test_MSE, L_mid_test_MSE, \
-    L_below_mid_test_MSE = process_results(DD_results_across_all_days)
+    L_above_mid_train_MSE, L_mid_train_MSE, L_below_mid_train_MSE, L_above_mid_test_MSE, L_mid_test_MSE, L_below_mid_test_MSE, \
+    L_Q1_train_MSE, L_Q3_train_MSE, L_Q1_test_MSE, L_Q3_test_MSE = process_results(DD_results_across_all_days)
     
     plot_average_train_and_test_MSE(L_test_days, L_mean_train_MSE, L_mean_test_MSE, cluster, D_hparams['model'])
     
@@ -67,9 +67,9 @@ def report_results(cluster : str, D_hparams : dict):
                                              L_std_train_MSE, L_std_test_MSE, 
                                              cluster, D_hparams['model'])
     
-    plot_median_train_and_test_MSE_with_min_max(L_test_days, 
+    plot_median_train_and_test_MSE_with_Q1_Q3(L_test_days, 
                                                 L_median_train_MSE, L_median_test_MSE, 
-                                                L_min_train_MSE, L_max_train_MSE, L_min_test_MSE, L_max_test_MSE, 
+                                                L_Q1_train_MSE, L_Q3_train_MSE, L_Q1_test_MSE, L_Q3_test_MSE, 
                                                 cluster, D_hparams['model'])
     
     plot_mid_range_train_and_test_MSE(L_test_days, 
@@ -102,6 +102,10 @@ def process_results(DD_results_across_all_days : dict):
     L_max_train_MSE = []
     L_min_test_MSE = []
     L_max_test_MSE = []
+    L_Q1_train_MSE = []
+    L_Q3_train_MSE = []
+    L_Q1_test_MSE = []
+    L_Q3_test_MSE = []
     L_above_mid_train_MSE = []
     L_mid_train_MSE = []
     L_below_mid_train_MSE = []
@@ -128,6 +132,11 @@ def process_results(DD_results_across_all_days : dict):
         L_max_train_MSE.append(max(train_MSE))
         L_min_test_MSE.append(min(test_MSE))
         L_max_test_MSE.append(max(test_MSE))
+        # Compute the 1st and 3rd quartiles
+        L_Q1_train_MSE.append(np.percentile(sorted(train_MSE), 25))
+        L_Q3_train_MSE.append(np.percentile(sorted(train_MSE), 75))
+        L_Q1_test_MSE.append(np.percentile(sorted(test_MSE), 25))
+        L_Q3_test_MSE.append(np.percentile(sorted(test_MSE), 75))
         below_mid_train_MSE, mid_train_MSE, above_mid_train_MSE = get_mid_range(sorted(train_MSE))
         below_mid_test_MSE, mid_test_MSE, above_mid_test_MSE = get_mid_range(sorted(test_MSE))
         L_above_mid_train_MSE.append(above_mid_train_MSE)
@@ -142,7 +151,8 @@ def process_results(DD_results_across_all_days : dict):
             L_median_train_MSE, L_median_test_MSE, \
             L_min_train_MSE, L_max_train_MSE, L_min_test_MSE, L_max_test_MSE, \
             L_above_mid_train_MSE, L_mid_train_MSE, L_below_mid_train_MSE, \
-            L_above_mid_test_MSE, L_mid_test_MSE, L_below_mid_test_MSE
+            L_above_mid_test_MSE, L_mid_test_MSE, L_below_mid_test_MSE, \
+            L_Q1_train_MSE, L_Q3_train_MSE, L_Q1_test_MSE, L_Q3_test_MSE
 
 
 def get_mid_range(L_range : list):
@@ -196,7 +206,7 @@ def plot_average_train_and_test_MSE(L_test_days, L_mean_train_MSE, L_mean_test_M
     Plots average train and test MSE versus test, if data available, in same chart. 
     Saves it in results/previous_days_results/plots folder.
     """
-     
+    
     fig = plt.figure()
     fig.patch.set_alpha(0)
     
@@ -252,11 +262,11 @@ def plot_average_train_and_test_MSE_with_std(L_test_days, L_mean_train_MSE, L_me
     fig.savefig(f"{path_to_results}/plots/{cluster}_average_MSE_with_std")
     
     
-def plot_median_train_and_test_MSE_with_min_max(L_test_days, L_median_train_MSE, L_median_test_MSE, 
-                                                L_min_train_MSE, L_max_train_MSE, L_min_test_MSE, L_max_test_MSE,
+def plot_median_train_and_test_MSE_with_Q1_Q3(L_test_days, L_median_train_MSE, L_median_test_MSE, 
+                                                L_Q1_train_MSE, L_Q3_train_MSE, L_Q1_test_MSE, L_Q3_test_MSE,
                                                 cluster : str, model : str):
     """
-    Plots median train and test MSE with bands corresponding to min and max values versus test, 
+    Plots median train and test MSE with bands corresponding to 1st and 3rd quartiles versus test, 
     if data available, in same chart. Saves it in results/previous_days_results/plots folder.
     """
     
@@ -266,29 +276,29 @@ def plot_median_train_and_test_MSE_with_min_max(L_test_days, L_median_train_MSE,
     plt.plot(L_test_days, L_median_train_MSE, label='Train MSE', color='green')
     plt.fill_between(L_test_days, 
                      L_median_train_MSE, 
-                     L_min_train_MSE, color='green', alpha=0.2)
+                     L_Q1_train_MSE, color='green', alpha=0.2)
     plt.fill_between(L_test_days, 
                      L_median_train_MSE, 
-                     L_max_train_MSE, color='green', alpha=0.2)
+                     L_Q3_train_MSE, color='green', alpha=0.2)
    
     plt.plot(L_test_days, L_median_test_MSE, label='Test MSE', color='orange')
     plt.fill_between(L_test_days, 
                      L_median_test_MSE, 
-                     L_min_test_MSE, color='orange', alpha=0.2)
+                     L_Q1_test_MSE, color='orange', alpha=0.2)
     plt.fill_between(L_test_days, 
                      L_median_test_MSE, 
-                     L_max_test_MSE, color='orange', alpha=0.2)
+                     L_Q3_test_MSE, color='orange', alpha=0.2)
     
-    plt.title(  f'Median train and test MSE with Min-Max for {model} model trained ' +
+    plt.title(  f'Median train and test MSE with first and third quartiles for {model} model trained ' +
                 f'\nwith days preceding test day using data from {cluster[0].upper() + cluster[1:]}')
     plt.xlabel('Test day')
     plt.xlim([FIRST_TEST_DAY, get_total_days(cluster)])
-    plt.ylabel('Median MSE with min-max')
+    plt.ylabel('Median MSE with 1st/3rd quartiles')
     plt.ylim(0.0)
     plt.tight_layout()
     plt.legend()
     
-    fig.savefig(f"{path_to_results}/plots/{cluster}_median_MSE_min_max")
+    fig.savefig(f"{path_to_results}/plots/{cluster}_median_MSE_Q1_Q3")
     
 
 def plot_mid_range_train_and_test_MSE(L_test_days,
