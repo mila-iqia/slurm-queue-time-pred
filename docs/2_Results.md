@@ -135,14 +135,12 @@ Here is a resume of the comparison between SLURM's estimator and our models' per
 <tr>
 <th></th>
 <th colspan=2>SLURM</th>
-<th></th>
 <th colspan=2>Neural network models</th>
-<th></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td></td>
+<td rowspan=2></td>
 <td>Cedar</td>
 <td>Narval</td>
 <td>Cedar</td>
