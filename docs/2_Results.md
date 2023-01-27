@@ -29,7 +29,7 @@ Overall, we find that the model trains correctly, since the predictions obtained
 
 ### With data from Cedar
 
-<div align="justify">The following figure shows the predictions obtained from the 10 separate training runs of the 7-layer model described in <a href="1_Methods.md"> Methods</a> according to true wait times.
+<div align="justify">The following figure shows the predictions obtained from the 10 separate training runs of the neural network trained on Cedar data according to true wait times.
 <br></br>
 <div align="center">
  <table>
@@ -38,7 +38,7 @@ Overall, we find that the model trains correctly, since the predictions obtained
    </td>
   </tr>
  </table>
- <i>Wait time predictions obtained with the 7-layer neural network model after training on Cedar data (1000 randomly chosen examples).
+ <i>Wait time predictions obtained with the neural network model after training on Cedar data (1000 randomly chosen examples).
  </i>
 </div>
 <br>
@@ -63,6 +63,7 @@ The training, validation, and test losses are calculated by taking the average o
   </tr>
  </table>
  <i>Distribution of differences (in log10) between predictions and actual values of wait time for 10 separate training runs
+ of the neural network trained on Cedar data.
  </i>
 </div>
 <br><br>
@@ -79,7 +80,7 @@ Note that we are talking here about differences between predictions and original
 
 ### With data from Graham
 
-<div align="justify">The following figure shows the predictions obtained from 10 separate training runs of the 6-layer model described in <a href="1_Methods.md"> Methods</a> according to the true wait times.
+<div align="justify">The following figure shows the predictions obtained from 10 separate training runs of the neural network trained on Graham data according to the true wait times.
 <br><br>
 <div align="center">
  <table>
@@ -88,7 +89,7 @@ Note that we are talking here about differences between predictions and original
    </td>
   </tr>
  </table>
- <i>Wait time predictions obtained with the 6-layer neural network model after training on Graham data (1000 randomly chosen examples).
+ <i>Wait time predictions obtained with the neural network model after training on Graham data (1000 randomly chosen examples).
  </i>
 </div>
 <br>
@@ -113,7 +114,7 @@ The following histogram shows the distribution of differences for the 10 model t
    </td>
   </tr>
  </table>
- <i>Distribution of differences (in log10) between predictions and actual values of wait time for 10 training runs of the 6-layer neural network model.
+ <i>Distribution of differences (in log10) between predictions and actual values of wait time for 10 training runs of the neural network trained on Graham data.
  </i>
 </div>
 <br>
@@ -127,48 +128,15 @@ Values below -5.0 are not shown for readability. These are 292 predictions below
 <br></br>
 We determined that the mean difference, on a base-10 logarithmic scale, for n=53 estimates on the Cedar cluster is 3.2032, while for n=58 estimates on the Narval cluster it is 2.4870. To calculate these values, fictitious jobs were submitted on these clusters and for each of them, the estimated job execution start time and the actual execution start time were retrieved. A difference of 3.2032 corresponds to approximately 1597 times the targets and a difference of 2.4870 corresponds to approximately 307 times the targets.
 
-Here is a resume of the comparison between SLURM's estimator and our models' performance:
+Here are the intervals where >50% of the predictions fall into, calculated from the MSE losses, where t is the real wait time in seconds:
 <br></br>
 <div align="center">
-<table>
-<thead>
-<tr>
-<th></th>
-<th colspan=2>SLURM</th>
-<th colspan=2>Neural network models</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td>Cedar</td>
-<td>Narval</td>
-<td>Cedar</td>
-<td>Graham</td>
-</tr>
-<tr>
-<td>Number of predictions</td>
-<td>53</td>
-<td>58</td>
-<td>429,220</td>
-<td>150,420</td>
-</tr>
-<tr>
-<td>Mean difference</td>
-<td>3.2032</td>
-<td>2.4870</td>
-<td>0.4299</td>
-<td>0.6583</td>
-</tr>
-<tr>
-<td>Interval of &gt;50% of predictions</td>
-<td>[0.0006<em>t, 1596.61</em>t]</td>
-<td>[0.0033<em>t, 306.9</em>t]</td>
-<td>[0.37<em>t, 2.69</em>t]</td>
-<td>[0.22<em>t, 4.55</em>t]</td>
-</tr>
-</tbody>
-</table>
+
+| | Cedar | Narval |
+|-|-------|--------|
+|Mean difference| 3.2032 | 2.4870 |
+|>50% prediction interval| [0.0006t, 1596.61t] | [0.0033*t, 306.9*t] |
+
 </div>
 <br></br>
 Dummy job data for the Cedar and Narval clusters is located in the project's <b>slurm_queue_time_pred.start_time_estimation</b> module.

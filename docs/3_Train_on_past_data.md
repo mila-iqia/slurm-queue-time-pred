@@ -10,7 +10,7 @@ A new parameter <code>test_day</code> selects the day used to test the model. Th
 
 <div align="justify">This section presents the results obtained for each of the test days between the 21st and the last day of data from the Cedar cluster. Rather than testing the model on the last day only, we chose a range of test days to account for potential variability in jobs on the last day compared to previous days. We decided to explore values of <code>test_day>=21</code> in order to have sufficient data for training. 
 <br><br>
-The following plot shows the average MSE (y-axis) with the standard deviation over the training and test set for a sample of experiments where the model was trained on past data. We used the 7-layer model described in <a href="1_Methods.md"> Methods</a>. The x-axis represents each of the days selected for testing between the 21st and the last day of the dataset. 
+The following plot shows the average MSE (y-axis) with the standard deviation over the training and test set for a sample of experiments where the model was trained on past data. We used the model described in <a href="1_Methods.md"> Methods</a> for Cedar. The x-axis represents each of the days selected for testing between the 21st and the last day of the dataset. 
 <br><br>
 <div align="center">
  <table>
@@ -19,7 +19,7 @@ The following plot shows the average MSE (y-axis) with the standard deviation ov
    </td>
   </tr>
  </table>
- <i>Average training (green curve) and test (yellow curve) MSE on predictions from the 7-layer model when trained with the days before T = test day, with the standard deviation, using data from Cedar.
+ <i>Average training (green curve) and test (yellow curve) MSE on the neural network's predictions when trained with the days before T = test day, with the standard deviation, using data from Cedar.
  </i>
 </div>
 <br>
@@ -34,7 +34,7 @@ The following figure shows the median MSE (y-axis) with the first and third quar
    </td>
   </tr>
  </table>
- <i>Median training (curve in green) and test (curve in yellow) MSE on predictions from the 7-layer model when trained with the days before T = day of test, with the first and third quartiles (left) and values ​​just below and just above the median (right), using data from Cedar.
+ <i>Median training (curve in green) and test (curve in yellow) MSE on neural network's predictions when trained with the days before T = test day, with the first and third quartiles (left) and values ​​just below and just above the median (right), using data from Cedar.
  </i>
 </div>
 <br>
