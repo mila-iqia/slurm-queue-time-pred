@@ -54,7 +54,7 @@ The training, validation, and test losses are calculated by taking the average o
 |test|  0.4299 |
 
 </div>
-
+<br></br>
 <div align="center">
  <table>
   <tr>
@@ -103,7 +103,7 @@ The training, validation, and test losses are calculated by taking the average o
 |test|  0.6583 |
 
 </div>
-
+<br></br>
 The following histogram shows the distribution of differences for the 10 model training runs.
 <br><br>
 <div align="center">
@@ -130,15 +130,48 @@ We determined that the mean difference, on a base-10 logarithmic scale, for n=53
 Here is a resume of the comparison between SLURM's estimator and our models' performance:
 <br></br>
 <div align="center">
-
-|| SLURM| |Neural network models ||
-|---|----|------|-----|------|
-||Cedar|Narval|Cedar| Graham|
-|Number of predictions| 53 | 58 | 429,220 | 150,420 |
-|Mean difference| 3.2032 | 2.4870 | 0.4299 | 0.6583 |
-|Interval of >50% of predictions| [0.0006*t, 1596.61*t] | [0.0033*t, 306.9*t] | [0.37*t, 2.69*t] | [0.22*t, 4.55*t] |
-
+<table>
+<thead>
+<tr>
+<th></th>
+<th colspan=2>SLURM</th>
+<th></th>
+<th colspan=2>Neural network models</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>Cedar</td>
+<td>Narval</td>
+<td>Cedar</td>
+<td>Graham</td>
+</tr>
+<tr>
+<td>Number of predictions</td>
+<td>53</td>
+<td>58</td>
+<td>429,220</td>
+<td>150,420</td>
+</tr>
+<tr>
+<td>Mean difference</td>
+<td>3.2032</td>
+<td>2.4870</td>
+<td>0.4299</td>
+<td>0.6583</td>
+</tr>
+<tr>
+<td>Interval of &gt;50% of predictions</td>
+<td>[0.0006<em>t, 1596.61</em>t]</td>
+<td>[0.0033<em>t, 306.9</em>t]</td>
+<td>[0.37<em>t, 2.69</em>t]</td>
+<td>[0.22<em>t, 4.55</em>t]</td>
+</tr>
+</tbody>
+</table>
 </div>
-
+<br></br>
 Dummy job data for the Cedar and Narval clusters is located in the project's <b>slurm_queue_time_pred.start_time_estimation</b> module.
 </div>
