@@ -140,7 +140,7 @@ Here is a resume of the comparison between SLURM's estimator and our models' per
 </thead>
 <tbody>
 <tr>
-<td rowspan=2></td>
+<td></td>
 <td>Cedar</td>
 <td>Narval</td>
 <td>Cedar</td>
