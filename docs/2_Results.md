@@ -3,8 +3,7 @@
 
 ## Linear model
 
-<div align="justify">The MSE losses calculated with the exact solution, on a base 10 logarithmic scale, are 0.3174 for training, 0.7462 for validation and 0.4134 for testing. 
-<br></br>
+<div align="justify">
 The following plot shows the predictions obtained after training the linear model according to the true jobs’ queue times (right graph). The black line that cuts the plane in half on the diagonal corresponds to the result that we would obtain if the model made no prediction errors. The red hatched lines are used to position real (non-logarithmic) wait time values on the x-axis.
 <br></br>
 <div align="center">
