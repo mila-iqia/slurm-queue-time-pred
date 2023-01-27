@@ -11,7 +11,7 @@ import pickle5 as pickle
 from slurm_queue_time_pred.wait_time_prediction.util import normalize, count_files_in_dir
 
 # Change this to your chosen path to data
-path_to_data = os.path.join(os.path.dirname(__file__), '../../data/synthetic_data')
+path_to_data = os.path.join(os.path.dirname(__file__), '../../data/data_on_submit_days')
 
 # First test day must be at least 3, so there is data for validation and training
 FIRST_TEST_DAY = 3
