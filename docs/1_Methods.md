@@ -72,7 +72,7 @@ The following table shows the architecture and training hyperparameters of the n
 </i>
 </div>
 <br>
-We proceeded to hyperparameters optimization (see file `sweep_random.yml`) using Weights & Biases taking as criterion the validation loss. In total, five hyperparameters were optimized: the learning rate, the number of layers, the number of hidden neurons per layer as well as the L1 and L2 regularization coefficients. Ten trials of training each model were performed to calculate the loss on the training, validation and test sets. Then, the predictions of the 10 trials were combined to obtain the distribution of the differences between the predictions and the actual wait time values.
+We proceeded to hyperparameters optimization (see file <code>sweep_random.yml</code>) using Weights & Biases taking as criterion the validation loss. In total, five hyperparameters were optimized: the learning rate, the number of layers, the number of hidden neurons per layer as well as the L1 and L2 regularization coefficients. Ten trials of training each model were performed to calculate the loss on the training, validation and test sets. Then, the predictions of the 10 trials were combined to obtain the distribution of the differences between the predictions and the actual wait time values.
 <br></br>
 It is worth noting that we did not go the route of modeling the data as time series in part because the nature of the SLURM jobs makes it hard to frame it like such, but also because the original data collection was set up for making predictions for each job in isolation. Indeed, the features of every job are augmented with extra features that represent the state of the cluster precisely so that predictions can be made without considering other external factors.
 <br></br>
@@ -81,7 +81,7 @@ It is worth noting that we did not go the route of modeling the data as time ser
 
 ## Code Documentation
 
-<div align="justify">To run a model training experiment, run the <b>run_experiment.py</b> script from the <b>slurm_queue_time_pred.wait_time_prediction</b> module specifying the desired training parameters and hyperparameters.
+<div align="justify">To run a model training experiment, run the <code>run_experiment.py</code> script from the <code>slurm_queue_time_pred.wait_time_prediction</code> module specifying the desired training parameters and hyperparameters.
 <br></br>
 Here is the list of possible (hyper)parameters, as well as their default values:
 </div>
@@ -187,5 +187,8 @@ Here is an example of running the script from outside the project root:
 </div>
 
 ```
-python3 slurm-queue-time-pred/slurm_queue_time_pred/wait_time_prediction/run_experiment.py --features=eligible_time,submit_time --model=linear -- learning_rate=0.00001 --batch_size=64 --optimizer=sgd --hidden_size=64 --nbr_layers=3 --l1=0.0001 --l2=0.0001 --mix_train_valid --cluster=graham
+python3 slurm-queue-time-pred/slurm_queue_time_pred/wait_time_prediction/run_experiment.py \
+    --features=eligible_time,submit_time --model=linear \
+    --learning_rate=0.00001 --batch_size=64 --optimizer=sgd \
+    --hidden_size=64 --nbr_layers=3 --l1=0.0001 --l2=0.0001 --mix_train_valid --cluster=graham
 ```
