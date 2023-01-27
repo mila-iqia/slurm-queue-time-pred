@@ -17,9 +17,7 @@ The following plot shows the predictions obtained after training the linear mode
  </i>
 </div>
 <br>
-The training, validation and test losses with the linear model, on a base 10 logarithmic scale, are 0.4046, 0.8315 and 0.4224 respectively. We see in the figure above that the model has trouble predicting values that are below 3, which corresponds to about 20 minutes of waiting (10<sup>3</sup> seconds = 20 minutes). Indeed, few examples of jobs with a waiting time (poll_wait_sec) of 20 minutes or less are present in the dataset, which explains this difficulty. 
-<br></br>
-Overall, we find that the model trains correctly, since the predictions obtained after training are very close to the predictions obtained with the least squares (exact) solution.
+The training, validation and test losses with the linear model, on a base 10 logarithmic scale, are 0.4046, 0.8315 and 0.4224 respectively. We see in the figure above that the model has trouble predicting values that are below 3, which corresponds to about 20 minutes of waiting (10<sup>3</sup> seconds = 20 minutes). Indeed, few examples of jobs with a waiting time (poll_wait_sec) of 20 minutes or less are present in the dataset, which explains this difficulty.
 <br></br>
 </div>
 
