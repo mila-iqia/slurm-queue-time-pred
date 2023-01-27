@@ -40,7 +40,7 @@ The training, validation and test losses with the linear model, on a base 10 log
 </div>
 <br>
 
-The training, validation, and test losses are calculated by taking the average of 10 training runs of the model. These are the MSE based on the differences between `log10(pred)` and `log10(target)` values.
+The training, validation, and test losses are calculated by taking the average of 10 training runs of the model. These are the MSE based on the differences between <code>log10(pred)</code> and <code>log10(target)</code> values.
 <br><br>
 <div align="center">
  
@@ -90,7 +90,7 @@ Note that we are talking here about differences between predictions and original
  </i>
 </div>
 <br>
-The training, validation, and test losses are calculated by taking the average of 10 training runs of the model. These are the MSE based on the differences between `log10(pred)` and `log10(target)` values.
+The training, validation, and test losses are calculated by taking the average of 10 training runs of the model. These are the MSE based on the differences between <code>log10(pred)</code> and <code>log10(target)</code> values.
 <br><br>
 <div align="center">
  
@@ -123,9 +123,11 @@ Values below -5.0 are not shown for readability. These are 292 predictions below
 
 <div align="justify">As a comparison, we can use the difference between the actual execution time of the jobs on the compute clusters and the value predicted by SLURM. This is equivalent to the difference between the actual and predicted waiting time. Indeed, SLURM provides an estimate based, among other things, on the time limit requested by the user for the job and the priority of other users’ jobs submitted afterwards. It is well known, however, that SLURM's estimation is grossly inaccurate.
 <br></br>
-We determined that the mean difference, on a base-10 logarithmic scale, for n=53 estimates on the Cedar cluster is 3.2032, while for n=58 estimates on the Narval cluster it is 2.4870. To calculate these values, fictitious jobs were submitted on these clusters and for each of them, the estimated job execution start time and the actual execution start time were retrieved.
+We have run our own informal experiment on the Cedar and Graham clusters. We can get a estimate for the wait time for a job by using the <code>--test-only</code> flag when submitting a job. This does not run the actual job, however, so if we want to get an actual measurement we need to submit that job again, wait for it to run, and record the time that it took. We have generated a variety of job requirements and computed the differences between the estimate and the reality.
 <br></br>
-Here are the intervals where >50% of the predictions fall into, calculated from the MSE losses, where t is the real wait time in seconds:
+We can report differences using the same MSE loss (on log10 values) as before to have the same basis of comparison. From our n=53 estimates on Cedar we get an MSE of 3.2032, and with n=58 estimates on Narval cluster we get an MSE of 2.4870.
+<br></br>
+We can do the same exercise as before and also report the intervals where >50% of the predictions fall into, where t is the real wait time in seconds:
 <br></br>
 <div align="center">
 
@@ -136,5 +138,5 @@ Here are the intervals where >50% of the predictions fall into, calculated from 
 
 </div>
 <br></br>
-Dummy job data for the Cedar and Narval clusters is located in the project's <b>slurm_queue_time_pred.start_time_estimation</b> module.
+Dummy job data for the Cedar and Narval clusters is located in the project's <code>slurm_queue_time_pred.start_time_estimation</code> module.
 </div>
