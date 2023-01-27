@@ -1,8 +1,8 @@
 # Feature exploration
 
-<div align="justify">One of the expectations of collaborators at the DRAC is to know the most significant features for predicting the waiting time of a job, for explainability purposes and to guide users on the choice of parameters for the <code>sbatch</code> and <code>salloc</code> commands when submitting jobs on compute clusters. Thus, we wanted to determine the features that best predict waiting time, that is those which, taken one at a time, produce the lowest MSE.
+<div align="justify">One of the goals of our collaborators at the DRAC was to know the most significant features for predicting the waiting time of a job, for explainability purposes and to guide users on the judicious choice of parameters for the <code>sbatch</code> and <code>salloc</code> commands when submitting jobs on compute clusters. Thus, we wanted to determine the features that best predict waiting time. That is, which small subset of features are the best minmizing the MSE?
 <br></br>
-The method we used to do this is to train a model with all the features individually, select the best one (the one that produces the lowest MSE), train the model with that feature and each of the unselected features, select the best combination of two features (including the one selected in the first step), and so on, until having selected the 10 best features and having trained the model with the combination of these.
+We used a greedy approach to construct a set of features, iteratively adding features based on which one would allow for the most important improvement (in terms of lowest MSE on the training set). Starting from a empty set, we try each feature individually to pick out the one which can yield the lowest MSE. We add the best and we continue the process until we have selected the 10 best features. Every time we perform an evaluation, this involves training a linear model or a neural network for predictions.
 <br></br>
 </div>
 
@@ -37,15 +37,17 @@ The method we used to do this is to train a model with all the features individu
  </i>
 </div>
 <br>
-The green hatched lines in the graphs above represent the MSE obtained by training the model with the set of all features (76). The loss cannot fall below this line with less training features. It is expected that the loss decreases monotonically, since the model always has the possibility of putting a zero coefficient in front of a feature which is not used for the prediction.
+The green hatched lines in the graphs above represent the MSE obtained by training the model with the set of all features (76). Because a properly-trained model can always chose to ignore some input features (using a zero coefficient), we get a monotonic decrease in the loss by adding more features. This applies to the training loss, but not to the test loss.
 <br></br>
-We find that the features selected by each of the models and the order of selection vary. This can be explained by the varying complexity of the models used; from the linear model to the 7-layer model, the complexity increases. Despite this, there is a tendency for models to choose “augmented” features, with the presence of *_above features that provide information related to the jobs that precede a given job. Among these jobs, those pending with higher priority (q_*_above) seem to have a greater predictive importance than the running jobs (r_*_above). Overall, the amount of memory, GPUs and CPU cores used on the computing cluster when submitting the job appear to be good predictors of the job’s waiting time.
+We find that the features selected by each of the models and the order of selection vary. This can be explained by the varying complexity of the models used; from the linear model to the 7-layer model, the complexity increases. One of the visible trends is that all models tend to make the best use of the so-called "augmented" features. That is, features that were artificially added to represent the state of the visible SLURM queue with many jobs already scheduled. Those jobs are identified with a naming scheme that matches <code>*_above</code>.
+<br></br>
+Among these jobs, those pending with higher priority (<code>q_*_above</code>) seem to have a greater predictive importance than the running jobs (<code>r_*_above</code>). Overall, the amount of memory, GPUs and CPU cores used on the computing cluster when submitting the job appear to be good predictors of the job’s waiting time.
 <br></br>
 </div>
 
 ## Code Documentation
 
-<div align="justify">To run a feature exploration experiment, run the <b>run_experiment.py</b> script from the <b>slurm_queue_time_pred.explore_features</b> module specifying the desired training (hyper)parameters, as listed in <a href="docs/1_Methods.md"> Methods</a>. The features argument does not apply. Here are the additional arguments:
+<div align="justify">To run a feature exploration experiment, run the <code>run_experiment.py</code> script from the <code>slurm_queue_time_pred.explore_features</code> module specifying the desired training (hyper)parameters, as listed in <a href="1_Methods.md"> Methods</a>. The features argument does not apply. Here are the additional arguments:
 <br></br>
 </div>
 <table>
@@ -74,7 +76,7 @@ We find that the features selected by each of the models and the order of select
 python3 slurm-queue-time-pred/slurm_queue_time_pred/explore_features/run_experiment.py --nbr_top_features=15 --output_dir=example_experiment
 ```
 
-<div align="justify">To generate the results of the best predictive features exploration, run the <b>report_results.py</b> script from the <b>slurm_queue_time_pred.explore_features</b> module using the same arguments as those used to launch the experiment. It is possible to choose a different number of accumulated features to produce the results files. An additional argument, synthetic_data, if present, allows the use of loss references (MSE) associated with synthetic data. The script will generate a JSON file containing the progression of training, validation and test losses as well as the frequency and average of times these losses deteriorated with the addition of a new feature. It will also generate three graphs representing each of the losses according to the accumulation of the best features.
+<div align="justify">To generate the results of the best predictive features exploration, run the <code>report_results.py</code> script from the <code>slurm_queue_time_pred.explore_features</code> module using the same arguments as those used to launch the experiment. It is possible to choose a different number of accumulated features to produce the results files. An additional argument, <code>--synthetic_data</code>, if present, allows the use of loss references (MSE) associated with synthetic data. The script will generate a JSON file containing the progression of training, validation and test losses as well as the frequency and average of times these losses deteriorated with the addition of a new feature. It will also generate three graphs representing each of the losses according to the accumulation of the best features.
 <br></br>
 Here is an example of running the script from outside the project root:
 </div>
