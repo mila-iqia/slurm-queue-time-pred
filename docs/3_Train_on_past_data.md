@@ -74,7 +74,8 @@ Using the maximum days for training the model (T=68), we obtain an average train
 </div>
 
 ```
-python3 slurm-queue-time-pred/slurm_queue_time_pred/train_on_previous_days/parallel_run.py --test_day=37 --nbr_layers=3 --single_run
+python3 slurm-queue-time-pred/slurm_queue_time_pred/train_on_previous_days/parallel_run.py --test_day=37 \
+--nbr_layers=3 --single_run
 ```
 
 <div align="justify">To generate the results of the training on past days experiments, run the <code>report_results.py</code> script from the <code>slurm_queue_time_pred.train_on_previous_days</code> module specifying the (hyper)parameters of the experiments for which the results will be generated in the results.previous_days_results directory, as listed in <a href="1_Methods.md"> Methods</a>. This will generate five graphs with, depending on the test day, the average GPU usage and the average duration of experiments, the average training and test MSE, the average training and test MSE with standard deviation, the median training and test MSE with 1st and 3rd quartiles and finally the median training and test MSE with values just above and just below.
@@ -83,5 +84,6 @@ Here is an example:
 </div>
 
 ```
-python3 slurm-queue-time-pred/slurm_queue_time_pred/train_on_previous_days/report_results.py --nbr_layers=3 --hidden_size=64 --cluster=graham
+python3 slurm-queue-time-pred/slurm_queue_time_pred/train_on_previous_days/report_results.py --nbr_layers=3 \
+--hidden_size=64 --cluster=graham
 ```
