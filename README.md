@@ -53,3 +53,15 @@ The project was done in collaboration with Pier-Luc St-Onge from Calcul Québec 
 <br></br>
 Special thanks to these individuals for collecting and sharing the data on the use of the Cedar and Graham computing clusters, because the project could not have been carried out otherwise. Also, big thanks to Mila and the IDT team for the internship opportunity and for access to computational resources.
 </div>
+
+## Citation
+
+```
+@software{Popa_SLURM_queue_time_2023,
+ author = {Popa, Bianca and Alain, Guillaume},
+ month = {1},
+ title = {{SLURM queue time prediction using neural networks}},
+ version = {1.0.0},
+ year = {2023}
+}
+```
