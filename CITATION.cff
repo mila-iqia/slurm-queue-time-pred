@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+  - family-names: Popa
+    given-names: Bianca
+  - family-names: Alain
+    given-names: Guillaume
+    orcid: https://orcid.org/0000-0002-2045-7839
+title: "SLURM queue time prediction using neural networks"
+version: 1.0.0
+date-released: 2023-01-27
