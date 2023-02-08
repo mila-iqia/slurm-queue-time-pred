@@ -49,7 +49,7 @@ The best predictors of a job's wait time on the cluster appear to be the amount 
 
 <div align="justify">This project was carried out as part of the internship of Bianca Popa, software engineering student at the École de technologie supérieure, from August 29, 2022 to January 27, 2023 at Mila, under the guidance of Guillaume Alain, deep learning researcher. Bianca Popa mainly contributed with the implementation, model training and documentation while Guillaume Alain mainly contributed with his ideas and expertise.
 <br></br>
-The project was done in collaboration with Pier-Luc St-Onge, Lucas Nogueira and Carl Lemaire from Calcul Québec and James Desjardins and Tyler Collins from SHARCNET, under the umbrella of the Digital Research Alliance of Canada (DRAC). 
+The project was done in collaboration with Pier-Luc St-Onge from Calcul Québec and James Desjardins and Tyler Collins from SHARCNET, under the umbrella of the Digital Research Alliance of Canada (DRAC). 
 <br></br>
 Special thanks to these individuals for collecting and sharing the data on the use of the Cedar and Graham computing clusters, because the project could not have been carried out otherwise. Also, big thanks to Mila and the IDT team for the internship opportunity and for access to computational resources.
 </div>
